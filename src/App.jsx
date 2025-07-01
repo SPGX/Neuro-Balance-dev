@@ -1,18 +1,20 @@
-import Navbar from './components/Navbar';
-import MobileNav from './components/MobileNav';
-import HeroSection from './components/HeroSection';
-import ServiceSection from './components/ServiceSection';
-import PartnerLogosSection from './components/PartnerLogosSection';
-import Footer from './components/Footer';
-import ReviewSection from './components/ReviewSection';
-import ContactSection from './components/ContactSection';
-import AboutNeuroBalance from './components/AboutNeuroBalance';
-import BalanceTypesSection from './components/BalanceTypesSection';
-import NeuroFeedbackSection from './components/NeuroFeedbackSection';
-import SymptomSection from './components/SymptomSection';
-import OurServices from './components/OurServices';
+import Navbar from "./components/Navbar";
+import MobileNav from "./components/MobileNav";
 
-import CustomerVideoSection from './components/CustomerVideoSection';
+import HeroSection from "./components/sections/HeroSection";
+import AboutNeuroBalance from "./components/AboutNeuroBalance";
+import BalanceTypesSection from "./components/sections/BalanceTypesSection";
+import OurServices from "./components/sections/OurServices";
+import NeuroFeedbackSection from "./components/sections/NeuroFeedbackSection";
+import ServiceSection from "./components/sections/ServiceSection";
+import SymptomSection from "./components/sections/SymptomSection";
+import PartnerLogosSection from "./components/sections/PartnerLogosSection";
+import ReviewSection from "./components/sections/ReviewSection";
+import ContactSection from "./components/sections/ContactSection";
+
+/* footer */
+import Footer from "./components/Footer";
+
 
 function App() {
   return (
@@ -28,7 +30,6 @@ function App() {
       <ServiceSection />
       <SymptomSection />
       <ReviewSection />
-      {/* <CustomerVideoSection /> */}
       <ContactSection />
       <Footer />
     </div>

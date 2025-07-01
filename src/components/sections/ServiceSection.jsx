@@ -2,7 +2,6 @@ export default function AppointmentSection() {
   return (
     <section className="bg-[#f0fdfa] py-20 px-6">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        {/* Left Text */}
         <div className="space-y-6">
           <h3 className="text-2xl font-bold text-teal-400">นัดหมาย</h3>
           <h2 className="text-5xl font-extrabold text-gray-900 leading-tight">
@@ -22,7 +21,6 @@ export default function AppointmentSection() {
           </div>
         </div>
 
-        {/* Form Card */}
         <div className="bg-white p-8 rounded-2xl shadow-xl">
           <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">ทำการนัดหมาย</h3>
           <form className="space-y-6">

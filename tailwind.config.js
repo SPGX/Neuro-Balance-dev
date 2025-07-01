@@ -2,21 +2,14 @@
 import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    /* --------------------------------------------------
-     *  Make Poppins the default font for the whole app
-     *  (Tailwind's `font-sans` utility and all base text)
-     * --------------------------------------------------*/
     fontFamily: {
-      sans: ["Poppins", "sans-serif"], // <— default font
+      sans: ['"Noto Sans Thai"', "Poppins", "sans-serif"],
+      poppins: ["Poppins", "sans-serif"],
+      noto: ['"Noto Sans Thai"', "sans-serif"],
     },
-
     extend: {
-      /* ---------- Brand Colours & Gradient ---------- */
       colors: {
         "neuro-start": "#90E0AB",
         "neuro-mid": "#0FC1A1",
@@ -26,32 +19,15 @@ export default {
         "neuro-gradient":
           "linear-gradient(180deg, #90E0AB 27.27%, #0FC1A1 40.27%, #106EE8 83.59%)",
       },
-
-      /* ------------- Additional Fonts ------------- */
-fontFamily: {
-  // 👇 ให้ Noto Sans Thai เป็นค่าเริ่มต้น
-  sans: ['"Noto Sans Thai"', 'sans-serif'],
-
-  // ใช้ Poppins เฉพาะเมื่อเรียก class `font-poppins`
-  poppins: ['Poppins', 'sans-serif'],
-
-  // สำรองชื่อยาว
-  noto: ['"Noto Sans Thai"', 'sans-serif'],
-},
-
-
-      /* -------------- Typography Scale -------------- */
       fontSize: {
         hero: [
-          "128px",
+          "clamp(64px, 10vw, 96px)",
           {
-            lineHeight: "1", // 100%
+            lineHeight: "1",
             letterSpacing: "0",
           },
         ],
       },
-
-      /* --------------- Custom Animations --------------- */
       keyframes: {
         "float-y": {
           "0%, 100%": { transform: "translateY(0)" },
@@ -70,6 +46,7 @@ fontFamily: {
         "float-y": "float-y 4s ease-in-out infinite",
         "slide-in-top": "slide-in-top 1s ease-out both",
         "fade-in-up": "fade-in-up 1s ease-out both",
+        "fade-in-up-delayed": "fade-in-up 1s ease-out 200ms both", // Support delay-200
       },
     },
   },
