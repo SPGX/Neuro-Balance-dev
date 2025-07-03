@@ -2,7 +2,7 @@ const menus = ['หน้าแรก', 'เกี่ยวกับ', 'คอ�
 
 export default function Navbar() {
   return (
-    <nav className="fixed top-0 left-0 w-full bg-white shadow-sm z-50">
+    <nav className="fixed top-0 left-0 w-full bg-white shadow-sm z-50 hidden md:block">
       <div className="max-w-7xl mx-auto px-6 py-3 flex justify-center space-x-6 text-sm font-medium text-gray-800">
         {menus.map((item, i) => (
           <div key={i} className="relative group cursor-pointer">
