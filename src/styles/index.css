@@ -2,21 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-white text-gray-800 font-sans;
-}
+@layer components {
 
-@keyframes slowspin {
-  from {
-    transform: rotateY(0deg);
+  .text-title-main-bold {
+    @apply font-noto font-bold text-[32px] leading-none tracking-tighter text-blackText;
   }
 
-  to {
-    transform: rotateY(360deg);
+  .text-title-main {
+    @apply font-noto text-[32px] leading-none tracking-tighter text-blackText;
   }
-}
 
-.animate-spin-slow {
-  animation: slowspin 20s linear infinite;
-  transform-style: preserve-3d;
+  .text-subtitle {
+    @apply font-noto font-medium text-[20px] leading-none tracking-tighter text-blackTextB2;
+  }
+
+  .text-body-gray {
+    @apply font-noto font-medium text-[16px] leading-none tracking-normal text-grayText;
+  }
+
+  .text-heading-green {
+    @apply font-poppins font-semibold text-[16px] leading-none tracking-normal text-tealPrimary;
+  }
+
+  .text-body-black {
+    @apply font-noto font-medium text-[16px] leading-none tracking-normal text-blackText;
+  }
+
+  .text-body-regular {
+    @apply font-noto font-normal text-[16px] leading-none tracking-normal text-blackText;
+  }
+
+  .text-body-poppins {
+    @apply font-poppins font-normal text-[16px] leading-none tracking-normal text-blackText;
+  }
+
+  .text-title-md {
+    @apply font-noto font-bold text-[24px] leading-none tracking-tight text-blackText;
+  }
+
+  .text-sm-gray {
+    @apply font-noto font-normal text-[14px] leading-none tracking-normal text-gray-500;
+  }
+
+  .placeholder-noto-gray {
+    @apply placeholder-[#1D1D1F4D] font-noto font-normal text-[16px] leading-none;
+  }
 }

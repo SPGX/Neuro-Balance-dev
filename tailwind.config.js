@@ -11,13 +11,14 @@ export default {
     },
     extend: {
       colors: {
-        "neuro-start": "#90E0AB",
-        "neuro-mid": "#0FC1A1",
-        "neuro-end": "#106EE8",
+        tealPrimary: "#0FC1A1",
+        grayText: "#6E6E73",
+        blackText: "#222225",
+        blackTextB2: "#222225B2",
+        blackText4D: "#1D1D1F4D",
       },
-      backgroundImage: {
-        "neuro-gradient":
-          "linear-gradient(180deg, #90E0AB 27.27%, #0FC1A1 40.27%, #106EE8 83.59%)",
+      letterSpacing: {
+        tighter: "-0.02em",
       },
       fontSize: {
         hero: [

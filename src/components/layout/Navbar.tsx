@@ -8,7 +8,7 @@ const menus = [
   { label: 'รีวิวลูกค้า', path: '/reviews' },
   { label: 'บทความ', path: '/blog' },
   { label: 'รูปภาพ', path: '/gallery' },
-  { label: 'ติดต่อเรา', path: '/contact' },
+  { label: 'ติดต่อเรา', path: '/contact-us' },
 ]
 
 export default function Navbar() {

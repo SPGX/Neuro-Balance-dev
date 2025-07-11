@@ -5,16 +5,17 @@ type Props = {
   onClick?: () => void;
   type?: 'button' | 'submit' | 'reset';
   variant?: 'primary' | 'outline';
-  color?: 'blue' | 'cyan' | 'teal' | 'gray';
+  color?: 'blue' | 'cyan' | 'teal' | 'gray' | 'gradient';
   disabled?: boolean;
   className?: string;
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg' | 'xl';
 };
 
 const sizeClasses = {
   sm: 'w-[100px] h-[36px] text-sm px-4 py-1',
   md: 'w-[135px] h-[46px] text-base px-[20px] py-[5px]',
-  lg: 'w-[160px] h-[54px] text-lg px-6 py-3'
+  lg: 'w-[160px] h-[54px] text-lg px-6 py-3',
+  xl: 'w-[160px] h-[48px] px-6 py-2 gap-2'
 };
 
 const colorClasses = {
@@ -33,6 +34,12 @@ const colorClasses = {
   gray: {
     primary: 'bg-gray-500 text-white hover:bg-gray-600',
     outline: 'border border-gray-400 text-gray-700 hover:bg-gray-100'
+  },
+  gradient: {
+    primary:
+      'bg-[linear-gradient(274.6deg,_#00AAFF_5.76%,_#106EE8_92.25%)] text-white',
+    outline:
+      'border border-[#00AAFF] text-[#00AAFF] hover:bg-[#E0F6FF]'
   }
 };
 
