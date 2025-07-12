@@ -8,7 +8,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "bash scripts/deploy-to-deploy-branch.sh"
+
   },
   "dependencies": {
     "@react-three/drei": "^10.0.8",
