@@ -21,8 +21,8 @@ export default function AppRoutes() {
       <Route path="/about" element={<AboutPage />} />
       <Route path="/components" element={<ComponentsPreviewPage />} />
       <Route path="/courses" element={<CoursesPage />} />
-      <Route path="/courses/neuro-balance" element={<NeuroBalancePage />} />
-      <Route path="/courses/bio-balance" element={<BioBalancePage />} />
+      {/* <Route path="/courses/neuro-balance" element={<NeuroBalancePage />} />
+      <Route path="/courses/bio-balance" element={<BioBalancePage />} /> */}
       <Route path="/contact-us" element={<ContactUs />} />
 
       {/* <Route path="/symptoms" element={<SymptomsPage />} />
