@@ -15,7 +15,7 @@ export default {
         grayText: "#6E6E73",
         blackText: "#222225",
         blackTextB2: "#222225B2",
-        blackText4D: "#1D1D1F4D",
+        blackTextE4: "#3E3E44",
       },
       letterSpacing: {
         tighter: "-0.02em",
@@ -24,7 +24,6 @@ export default {
         hero: [
           "clamp(64px, 10vw, 96px)",
           {
-            lineHeight: "1",
             letterSpacing: "0",
           },
         ],
@@ -47,7 +46,7 @@ export default {
         "float-y": "float-y 4s ease-in-out infinite",
         "slide-in-top": "slide-in-top 1s ease-out both",
         "fade-in-up": "fade-in-up 1s ease-out both",
-        "fade-in-up-delayed": "fade-in-up 1s ease-out 200ms both", // Support delay-200
+        "fade-in-up-delayed": "fade-in-up 1s ease-out 200ms both",
       },
     },
   },
