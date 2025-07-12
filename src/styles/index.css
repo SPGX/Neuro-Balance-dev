@@ -5,43 +5,59 @@
 @layer components {
 
   .text-title-main-bold {
-    @apply font-noto font-bold text-[32px] leading-none tracking-tighter text-blackText;
+    @apply font-noto font-bold text-[32px] tracking-tighter text-blackText;
+  }
+
+  .text-title-info {
+    @apply font-noto font-bold text-[36px] tracking-tighter text-blackText;
   }
 
   .text-title-main {
-    @apply font-noto text-[32px] leading-none tracking-tighter text-blackText;
+    @apply font-noto text-[32px] tracking-tighter text-blackText;
   }
 
   .text-subtitle {
-    @apply font-noto font-medium text-[20px] leading-none tracking-tighter text-blackTextB2;
+    @apply font-noto font-normal text-[20px] tracking-tighter text-blackTextB2;
+  }
+
+  .text-description {
+    @apply font-noto font-normal text-[20px] tracking-tighter text-blackTextE4;
   }
 
   .text-body-gray {
-    @apply font-noto font-medium text-[16px] leading-none tracking-normal text-grayText;
+    @apply font-noto font-medium text-[16px] tracking-normal text-grayText;
   }
 
   .text-heading-green {
-    @apply font-poppins font-semibold text-[16px] leading-none tracking-normal text-tealPrimary;
+    @apply font-poppins font-semibold text-[16px] tracking-normal text-tealPrimary;
+  }
+
+  .text-heading-green-bold {
+    @apply font-noto font-bold text-[20px] tracking-normal text-tealPrimary;
+  }
+
+  .text-title-green {
+    @apply font-noto font-semibold text-[64px] tracking-normal text-tealPrimary;
   }
 
   .text-body-black {
-    @apply font-noto font-medium text-[16px] leading-none tracking-normal text-blackText;
+    @apply font-noto font-medium text-[16px] tracking-normal text-blackText;
   }
 
   .text-body-regular {
-    @apply font-noto font-normal text-[16px] leading-none tracking-normal text-blackText;
-  }
-
-  .text-body-poppins {
-    @apply font-poppins font-normal text-[16px] leading-none tracking-normal text-blackText;
+    @apply font-noto font-normal text-[16px] tracking-normal text-blackText;
   }
 
   .text-title-md {
-    @apply font-noto font-bold text-[24px] leading-none tracking-tight text-blackText;
+    @apply font-noto font-bold text-[24px] tracking-tight text-blackText;
+  }
+
+  .text-title-sm-bold {
+    @apply font-noto font-bold text-[20px] tracking-tight text-blackText;
   }
 
   .text-sm-gray {
-    @apply font-noto font-normal text-[14px] leading-none tracking-normal text-gray-500;
+    @apply font-noto font-normal text-[14px] tracking-normal text-gray-500;
   }
 
   .placeholder-noto-gray {
