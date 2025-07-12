@@ -46,11 +46,11 @@ export default function InfoCard({
                     {image && (
                         <img src={image} alt={title} className="w-[72px] h-[72px] object-contain mb-4" />
                     )}
-                    <h3 className="text-[36px] font-semibold text-gray-900 leading-tight font-[Noto Sans Thai] mb-4">
+                    <h3 className="text-title-info mb-4">
                         {title}
                     </h3>
                     {description && (
-                        <p className="text-gray-600 text-base leading-relaxed mb-6">{description}</p>
+                        <p className="text-subtitle leading-relaxed mb-6">{description}</p>
                     )}
                     {footer && (
                         <div className="absolute bottom-6 right-6">
