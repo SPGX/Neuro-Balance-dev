@@ -28,7 +28,7 @@ jobs:
 
       - name: 🚀 Deploy to deploy branch
         env:
-          GITHUB_TOKEN: ${{ secrets.DEPLOY_PAT }}
+          DEPLOY_PAT: ${{ secrets.DEPLOY_PAT }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
