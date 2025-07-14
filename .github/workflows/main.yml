@@ -31,7 +31,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          mv build ../build-temp
+          mv dist ../dist-temp
 
           if git show-ref --verify --quiet refs/heads/deploy; then
             git checkout deploy
@@ -43,8 +43,8 @@ jobs:
 
           git clean -fdx
 
-          cp -r ../build-temp/* .
-          rm -rf ../build-temp
+          cp -r ../dist-temp/* .
+          rm -rf ../dist-temp
 
           touch .nojekyll
 
