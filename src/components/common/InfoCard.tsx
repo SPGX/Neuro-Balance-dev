@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 type InfoCardProps = {
     title: string;
-    description?: string;
+    description?: ReactNode;
     image?: string;
     icon?: React.ReactNode;
     footer?: React.ReactNode;
@@ -31,42 +31,43 @@ export default function InfoCard({
         <div
             onClick={onClick}
             className={`
-        bg-white 
-        ${isHighlight ? 'rounded-[32px] p-6 md:p-8 max-w-[400px] relative shadow-md hover:shadow-lg' : ''}
-        ${isNeuro ? 'rounded-2xl p-8 shadow-md hover:shadow-xl hover:scale-105' : ''}
-        ${!isHighlight && !isNeuro ? 'rounded-xl shadow-md hover:shadow-lg' : ''}
-        transition cursor-pointer overflow-hidden w-full mx-auto 
-        ${isCompact ? 'max-w-[270px]' : isNeuro ? 'max-w-[600px]' : isHighlight ? 'max-w-[400px]' : 'max-w-[360px]'}
-        ${isHorizontal && !isNeuro && !isHighlight ? 'flex items-start gap-4 p-4' : (!isNeuro && !isHighlight ? 'flex flex-col p-6' : '')}
+        bg-white transition cursor-pointer overflow-hidden w-full mx-auto
+        ${isHighlight ? 'rounded-[32px] p-6 md:p-8 shadow-md hover:shadow-lg max-w-[400px] flex flex-col h-full' : ''}
+        ${isNeuro ? 'rounded-2xl p-8 shadow-md hover:shadow-xl hover:scale-105 max-w-[600px]' : ''}
+        ${!isHighlight && !isNeuro ? 'rounded-xl shadow-md hover:shadow-lg flex flex-col p-6 max-w-[360px]' : ''}
+        ${isCompact ? 'max-w-[270px]' : ''}
+        ${isHorizontal && !isNeuro && !isHighlight ? 'flex-row items-start gap-4' : 'flex flex-col'}
+        h-full
       `}
         >
-            {/* === Highlight Card === */}
             {isHighlight ? (
-                <>
-                    {image && (
-                        <img src={image} alt={title} className="w-[72px] h-[72px] object-contain mb-4" />
-                    )}
-                    <h3 className="text-title-info mb-4">
-                        {title}
-                    </h3>
-                    {description && (
-                        <p className="text-subtitle leading-relaxed mb-6">{description}</p>
-                    )}
-                    {footer && (
-                        <div className="absolute bottom-6 right-6">
-                            {footer}
-                        </div>
-                    )}
-                </>
+                <div className="flex flex-col justify-between flex-1 h-full">
+                    <div className="flex-1">
+                        {image && (
+                            <img
+                                src={image}
+                                alt={title}
+                                className="w-[72px] h-[72px] object-contain mb-4"
+                            />
+                        )}
+                        <h3 className="text-title-36-black-semi mb-4">{title}</h3>
+                        <span className="text-body-24-regular">{description}</span>
+                    </div>
+                    {footer && <div className="mt-6 flex justify-end">{footer}</div>}
+                </div>
             ) : isNeuro ? (
                 <>
                     <div className="flex items-center gap-6 mb-4">
-                        {image && <img src={image} alt={title} className="w-24 h-24 object-contain" />}
+                        {image && (
+                            <img
+                                src={image}
+                                alt={title}
+                                className="w-24 h-24 object-contain"
+                            />
+                        )}
                         <h3 className="text-xl font-semibold text-teal-600">{title}</h3>
                     </div>
-                    {description && (
-                        <p className="text-gray-700 text-base leading-relaxed mb-6">{description}</p>
-                    )}
+                    {description}
                     {footer && <div>{footer}</div>}
                 </>
             ) : (
@@ -87,29 +88,24 @@ export default function InfoCard({
                             )}
                         </div>
                     )}
-
                     <div
                         className={`
               ${isHorizontal ? 'flex-1' : ''}
               ${isStandard || isCompact ? 'text-left' : 'text-center'}
-              text-gray-800
+              text-gray-800 flex flex-col justify-between h-full
             `}
                     >
-                        <h3 className={`font-semibold mb-2 ${isCompact ? 'text-base' : 'text-lg'}`}>
-                            {title}
-                        </h3>
-                        {description && (
-                            <p
-                                className={`text-gray-600 ${isCompact ? 'text-sm' : 'text-base'} leading-snug`}
-                            >
-                                {description}
-                            </p>
-                        )}
-                        {footer && (
-                            <div className={`${isHorizontal || isStandard ? 'mt-4 text-left' : 'mt-6'}`}>
-                                {footer}
-                            </div>
-                        )}
+                        <div>
+                            <h3 className={`font-semibold mb-2 ${isCompact ? 'text-base' : 'text-lg'}`}>
+                                {title}
+                            </h3>
+                            {description && (
+                                <p className={`text-gray-600 ${isCompact ? 'text-sm' : 'text-base'} leading-snug`}>
+                                    {description}
+                                </p>
+                            )}
+                        </div>
+                        {footer && <div className="mt-4 flex justify-end">{footer}</div>}
                     </div>
                 </>
             )}

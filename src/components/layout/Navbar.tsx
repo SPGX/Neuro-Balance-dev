@@ -1,42 +1,147 @@
-import { NavLink } from 'react-router-dom'
-
-const menus = [
-  { label: 'หน้าแรก', path: '/' },
-  { label: 'เกี่ยวกับ', path: '/about' },
-  { label: 'คอร์สเทรนนิ่ง', path: '/courses' },
-  { label: 'อาการ', path: '/symptoms' },
-  { label: 'รีวิวลูกค้า', path: '/reviews' },
-  { label: 'บทความ', path: '/blog' },
-  { label: 'รูปภาพ', path: '/gallery' },
-  { label: 'ติดต่อเรา', path: '/contact-us' },
-]
+import React, { useState, useEffect } from 'react'
+import { Link, NavLink } from 'react-router-dom'
+import classNames from 'classnames'
+import { menus } from './menus'
+import { useLanguage } from '../../i18n/LanguageProvider'
 
 export default function Navbar() {
+  const [open, setOpen] = useState(false)
+  const { lang, setLang, toggle } = useLanguage()
+
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [open])
+
   return (
-    <nav className="fixed top-0 left-0 w-full bg-white shadow-sm z-50 hidden md:block">
-      <div className="max-w-7xl mx-auto px-6 py-3 flex justify-center space-x-6 text-sm font-medium text-gray-800">
-        {menus.map(({ label, path }) => (
-          <NavLink
-            key={path}
-            to={path}
-            className={({ isActive }) =>
-              [
-                'relative cursor-pointer transition-colors',
-                isActive ? 'text-teal-600' : 'hover:text-teal-600',
-              ].join(' ')
-            }
+    <header className="fixed top-0 left-0 w-full z-50">
+      <div
+        className="w-full bg-[#3B786D80] backdrop-blur-[50px] flex items-center justify-between px-6 md:px-8 py-2"
+        style={{ backgroundColor: '#3B786D80', backdropFilter: 'blur(50px)', WebkitBackdropFilter: 'blur(50px)' }}
+      >
+        <div className="flex items-center gap-3">
+          <Link to="/" className="flex items-center gap-3">
+            <img
+              src="/favicon.svg"
+              alt="Logo"
+              className="w-8 h-8 mr-2 shadow rounded-full"
+            />
+            <span className="nav-text">Neuro Balance</span>
+          </Link>
+        </div>
+
+        <div className="hidden md:flex items-center gap-2">
+          <div
+            className="flex items-center rounded-full p-1 shadow"
+            style={{ backgroundColor: '#345F57' }}
           >
-            {({ isActive }) => (
-              <>
-                <span>{label}</span>
-                {isActive && (
-                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-teal-500 rounded-full" />
-                )}
-              </>
-            )}
-          </NavLink>
-        ))}
+            <button
+              type="button"
+              onClick={() => setLang('th')}
+              className={classNames(
+                'px-2.5 py-1 text-sm rounded-full transition',
+                lang === 'th' ? 'bg-white text-black' : 'hover:bg-white/10 text-white'
+              )}
+              aria-pressed={lang === 'th'}
+            >
+              TH
+            </button>
+            <button
+              type="button"
+              onClick={() => setLang('en')}
+              className={classNames(
+                'px-2.5 py-1 text-sm rounded-full transition',
+                lang === 'en' ? 'bg-white text-black' : 'hover:bg-white/10 text-white'
+              )}
+              aria-pressed={lang === 'en'}
+            >
+              EN
+            </button>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          className="flex md:hidden items-center justify-center w-8 h-8"
+          onClick={() => setOpen(v => !v)}
+          aria-label="เปิดเมนู"
+        >
+          <div className="relative w-8 h-6 flex flex-col justify-between">
+            <span className={classNames("block h-1 bg-white rounded transition-all duration-200", open && "rotate-45 translate-y-2.5")}></span>
+            <span className={classNames("block h-1 bg-white rounded transition-all duration-200", open && "opacity-0")}></span>
+            <span className={classNames("block h-1 bg-white rounded transition-all duration-200", open && "-rotate-45 -translate-y-2.5")}></span>
+          </div>
+        </button>
       </div>
-    </nav>
+
+      <nav className="w-full bg-white shadow-sm hidden md:block">
+        <div className="max-w-7xl mx-auto px-6 pt-4 pb-0 flex justify-center items-stretch space-x-6 text-noto-black-nav-16">
+          {menus.map(({ label, path }) => (
+            <NavLink
+              key={path}
+              to={path}
+              className={({ isActive }) =>
+                [
+                  'relative flex items-end h-full pb-2 cursor-pointer transition-colors',
+                  isActive ? 'text-teal-600' : 'hover:text-teal-600'
+                ].join(' ')
+              }
+            >
+              {({ isActive }) => (
+                <>
+                  <span>{label}</span>
+                  {isActive && (
+                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-teal-500 rounded-full" />
+                  )}
+                </>
+              )}
+            </NavLink>
+          ))}
+        </div>
+      </nav>
+
+      {open && (
+        <div
+          className="fixed top-0 left-0 w-full h-full bg-black/30 z-[48] md:hidden"
+          onClick={() => setOpen(false)}
+        />
+      )}
+
+      {/* Mobile drawer */}
+      <div
+        className={classNames(
+          "fixed top-[72px] right-0 w-64 h-[calc(100vh-72px)] bg-white z-[50] p-6 shadow-lg transition-transform duration-300 ease-in-out md:hidden",
+          open ? "translate-x-0" : "translate-x-full"
+        )}
+      >
+        <div className="flex flex-col gap-6 text-right text-gray-800 font-medium text-base">
+          {menus.map(({ label, path }) => (
+            <NavLink
+              key={path}
+              to={path}
+              onClick={() => setOpen(false)}
+              className={({ isActive }) =>
+                classNames('cursor-pointer transition-colors', isActive ? 'text-teal-600' : 'hover:text-teal-600')
+              }
+            >
+              {label}
+            </NavLink>
+          ))}
+
+          <div className="flex justify-end">
+            <button
+              type="button"
+              onClick={toggle}
+              className="flex items-center gap-2 px-4 py-2 rounded-full text-sm shadow transition"
+              style={{ backgroundColor: '#345F57', color: 'white' }}
+            >
+              <span>{lang === 'th' ? 'TH' : 'EN'}</span>
+              <span className="opacity-70">/</span>
+              <span className="opacity-70">{lang === 'th' ? 'EN' : 'TH'}</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
   )
 }

@@ -1,24 +1,27 @@
 import React from 'react'
+import parse from 'html-react-parser';
 
 type IntroBlockProps = {
     title: string
     icon: string
-    paragraphs: string[]
+    description: string
 }
 
-export default function IntroBlock({ title, icon, paragraphs }: IntroBlockProps) {
+export default function IntroBlock({ title, icon, description }: IntroBlockProps) {
     return (
-        <section className="bg-white max-w-[1440px] mx-auto px-4 md:px-10 py-16 md:py-24">
-            <div className="grid md:grid-cols-12 gap-10 items-center">
-                <div className="md:col-span-10 space-y-6 text-gray-800 text-[17px] leading-relaxed">
-                    <h2 className="text-2xl md:text-3xl font-bold mb-4">{title}</h2>
-                    {paragraphs.map((text, idx) => (
-                        <p key={idx} dangerouslySetInnerHTML={{ __html: text }} />
-                    ))}
+        <section className="w-full bg-white mx-auto pl-6 pr-6 lg:pr-0 md:pl-11 md:pr-11 2xl:pl-48">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-9">
+                <div className="text-size-20 font-medium leading-relaxed md:flex-1">
+                    <h2 className="text-size-32 font-bold mb-4">{title}</h2>
+                    {parse(description)}
                 </div>
 
-                <div className="md:col-span-2 flex justify-center md:justify-end">
-                    <img src={icon} alt="Intro icon" className="w-28 md:w-32 lg:w-40 self-center" />
+                <div className="hidden lg:flex justify-end items-center md:w-auto">
+                    <img
+                        src={icon}
+                        alt="Intro icon"
+                        className="h-full max-h-[540px] w-auto object-contain pt-20"
+                    />
                 </div>
             </div>
         </section>

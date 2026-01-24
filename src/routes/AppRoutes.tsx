@@ -4,15 +4,16 @@ import AboutPage from '../pages/AboutPage'
 import ComponentsPreviewPage from '../pages/ComponentsPreviewPage'
 import NotFoundPage from '../pages/NotFoundPage'
 import CoursesPage from '../pages/CoursesPage'
-import BioBalancePage from '../pages/courses/bio-balance'
-import NeuroBalancePage from '../pages/courses/neuro-balance'
 import ContactUs from '../pages/ContactUs'
-
-// import SymptomsPage from '../pages/SymptomsPage'
-// import ReviewsPage from '../pages/ReviewsPage'
-// import BlogPage from '../pages/BlogPage'
-// import GalleryPage from '../pages/GalleryPage'
-// import ContactPage from '../pages/ContactPage'
+import ReviewsPage from '../pages/ReviewPage'
+import BioBalancePage from '../pages/courses/BioBalance'
+import NeuroBalancePage from '../pages/courses/NeuroBalance'
+import AtecIntroPage from '../pages/AtecIntroPage'
+import AtecQuestionPage from '../pages/AtecQuestionPage';
+import NeurologicalSymptomPage from '../pages/NeurologicalSymptomPage'
+import ArticleListPage from '../pages/ArticleListPage'
+import SymptomArticlePage from '../pages/SymptomArticlePage'
+import ArticlePage from '../pages/ArticlePage'
 
 export default function AppRoutes() {
   return (
@@ -21,15 +22,17 @@ export default function AppRoutes() {
       <Route path="/about" element={<AboutPage />} />
       <Route path="/components" element={<ComponentsPreviewPage />} />
       <Route path="/courses" element={<CoursesPage />} />
-      {/* <Route path="/courses/neuro-balance" element={<NeuroBalancePage />} />
-      <Route path="/courses/bio-balance" element={<BioBalancePage />} /> */}
+      <Route path="/courses/neuro-balance" element={<NeuroBalancePage />} />
+      <Route path="/courses/bio-balance" element={<BioBalancePage />} />
       <Route path="/contact-us" element={<ContactUs />} />
-
-      {/* <Route path="/symptoms" element={<SymptomsPage />} />
+      <Route path="/neurological-symptom" element={<NeurologicalSymptomPage />} />
       <Route path="/reviews" element={<ReviewsPage />} />
-      <Route path="/blog" element={<BlogPage />} />
-      <Route path="/gallery" element={<GalleryPage />} />
-      <Route path="/contact" element={<ContactPage />} /> */}
+      <Route path="/atec" element={<AtecIntroPage />} />
+      <Route path="/atec/question" element={<AtecQuestionPage />} />
+      <Route path="/symptoms" element={<NeurologicalSymptomPage />} />
+      <Route path="/symptom-article/:documentId" element={<SymptomArticlePage />} />
+      <Route path="/article" element={<ArticleListPage />} />
+      <Route path="/article/:documentId" element={<ArticlePage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   )

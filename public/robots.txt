@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+Disallow: /components
+Disallow: /api/
+Disallow: /admin/
+Disallow: /draft/
+Disallow: /search
+
+Sitemap: https://neurobalance.co/sitemap-index.xml

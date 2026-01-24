@@ -1,70 +1,156 @@
+import { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination } from "swiper/modules";
+import { useLanguage } from "../../../i18n/LanguageProvider";
+import { ChevronRight } from 'lucide-react';
+
+type Symptom = { title: string; desc: string; img: string };
+
+const COPY: Record<
+  "th" | "en",
+  {
+    eyebrow: string;
+    heading: string;
+    sub: string;
+    tabs: { child: string; adult: string };
+    child: Symptom[];
+    adult: Symptom[];
+  }
+> = {
+  th: {
+    eyebrow: "อาการที่สังเกต",
+    heading: "คุณมีปัญหาแบบนี้\nบ้างหรือไม่?",
+    sub: "การเฝ้าสังเกตอาการของผู้มีความเสี่ยงเพื่อเข้ารับการฟื้นฟูและรักษา",
+    tabs: { child: "อาการของเด็ก", adult: "อาการของผู้ใหญ่ / สูงอายุ" },
+    child: [
+      { title: "สมาธิสั้น", desc: "คำอธิบายโดยย่อ", img: "/home/child1.svg" },
+      { title: "กระบวนการเรียนรู้", desc: "คำอธิบายโดยย่อ", img: "/home/child2.svg" },
+      { title: "ประสาทสัมผัสและการเคลื่อนไหว", desc: "คำอธิบายโดยย่อ", img: "/home/child3.svg" },
+      { title: "การสื่อสาร", desc: "คำอธิบายโดยย่อ", img: "/home/child4.svg" },
+      { title: "ความจำ", desc: "คำอธิบายโดยย่อ", img: "/home/child5.svg" },
+    ],
+    adult: [
+      { title: "การเคลื่อนไหว", desc: "คำอธิบายโดยย่อ", img: "/home/child5.svg" },
+      { title: "ความคิดและการสื่อสาร", desc: "คำอธิบายโดยย่อ", img: "/home/child5.svg" },
+      { title: "ความจำ", desc: "คำอธิบายโดยย่อ", img: "/home/child5.svg" },
+      { title: "การนอนหลับ", desc: "คำอธิบายโดยย่อ", img: "/home/child5.svg" },
+      { title: "ความเครียด", desc: "คำอธิบายโดยย่อ", img: "/home/child5.svg" },
+    ],
+  },
+  en: {
+    eyebrow: "Observable Symptoms",
+    heading: "Do You Experience\nThese Issues?",
+    sub: "Monitoring At-Risk Individuals for Early Rehabilitation and Care",
+    tabs: { child: "Children", adult: "Adults / Seniors" },
+    child: [
+      { title: "Attention Deficit", desc: "description", img: "/home/child1.svg" },
+      { title: "Learning Process", desc: "description", img: "/home/child2.svg" },
+      { title: "Sensory and Motor Skills", desc: "description", img: "/home/child3.svg" },
+      { title: "Communication", desc: "description", img: "/home/child4.svg" },
+      { title: "Memory", desc: "description", img: "/home/child5.svg" },
+    ],
+    adult: [
+      { title: "Mobility", desc: "description", img: "/home/child5.svg" },
+      { title: "Cognitive Process & Communication", desc: "description", img: "/home/child5.svg" },
+      { title: "Memory", desc: "description", img: "/home/child5.svg" },
+      { title: "Sleep", desc: "description", img: "/home/child5.svg" },
+      { title: "Stress", desc: "description", img: "/home/child5.svg" },
+    ],
+  },
+};
+
 export default function SymptomSection() {
+  const { lang } = useLanguage();
+  const T = COPY[lang];
+
+  const [group, setGroup] = useState<"child" | "adult">("child");
+  const data = group === "child" ? T.child : T.adult;
+
   return (
-    <section
-      className="relative bg-gradient-to-b from-white to-gray-50 py-20 px-4 md:px-8 text-gray-900"
-    >
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <p className="text-teal-500 font-semibold text-lg">Symptom</p>
-          <h2 className="text-3xl md:text-4xl font-extrabold mt-2">
-            คุณมีปัญหาแบบนี้บ้างหรือไม่?
+    <section className="max-w-7xl mx-auto py-20 px-0">
+      <div className="flex flex-col md:flex-row gap-10 w-full">
+        {/* LEFT */}
+        <div className="w-full md:max-w-lg px-4 flex flex-col justify-center">
+          <p className="text-eyebrow mb-2">{T.eyebrow}</p>
+
+          <h2 className="text-heading">
+            {T.heading}
           </h2>
+
+          <p className="text-gray-500 mb-6">{T.sub}</p>
+          
+          <div className="border border-[#0000001A] mb-7"/>
+
+          <div className="flex flex-col gap-2" role="tablist" aria-label="symptom group">
+            <button
+              className={`text-left px-4 py-3 rounded-lg border transition font-semibold text-[#3E3E44] ${group === "child"
+                ? "bg-gray-100 border-none"
+                : "bg-white border-none hover:bg-gray-50"
+                }`}
+              onClick={() => setGroup("child")}
+              aria-pressed={group === "child"}
+              role="tab"
+              type="button"
+            >
+              <span className="flex justify-between items-center gap-2">
+                <span>{T.tabs.child}</span>
+                <span><ChevronRight /></span>
+              </span>
+            </button>
+            <button
+              className={`text-left px-4 py-3 rounded-lg border transition font-semibold text-[#3E3E44] ${group === "adult"
+                ? "bg-gray-100 border-none"
+                : "bg-white border-none hover:bg-gray-50"
+                }`}
+              onClick={() => setGroup("adult")}
+              aria-pressed={group === "adult"}
+              role="tab"
+              type="button"
+            >
+              <span className="flex justify-between items-center gap-2">
+                <span>{T.tabs.adult}</span>
+                <span><ChevronRight /></span>
+              </span>
+            </button>
+          </div>
         </div>
 
-        <div className="md:flex bg-white border border-teal-300 rounded-2xl p-6 md:p-10 shadow-lg">
-          <div className="md:w-1/2 md:pr-10 border-r border-teal-200">
-            <h3 className="text-xl font-bold text-gray-900 mb-2">เด็ก</h3>
-            <p className="text-sm text-gray-600 mb-6">ระบบจิตจดจ่อเสถียรและประสิทธิภาพสูง</p>
-            <ul className="space-y-4 pl-4 list-disc marker:text-teal-400 text-base leading-relaxed">
-              <li>
-                <span className="font-semibold text-gray-800">สมาธิสั้น</span>
-                <div className="text-gray-600">ระบบจิตจดจ่อเสถียรและประสิทธิภาพสูง</div>
-              </li>
-              <li>
-                <span className="font-semibold text-gray-800">กระบวนการเรียนรู้</span>
-                <div className="text-gray-600">ป้องกัน Downtime ให้ VM ทำงานได้ต่อเนื่อง</div>
-              </li>
-              <li>
-                <span className="font-semibold text-gray-800">ประสาทสัมผัสและการเคลื่อนไหว</span>
-                <div className="text-gray-600">ปรับขนาด CPU/RAM ของ VM ได้ทันทีโดยไม่ต้องปิดเครื่อง</div>
-              </li>
-              <li>
-                <span className="font-semibold text-gray-800">การสื่อสาร</span>
-                <div className="text-gray-600">ตั้งค่าการจัดเก็บข้อมูลให้เหมาะกับ Workload</div>
-              </li>
-              <li>
-                <span className="font-semibold text-gray-800">ความจำ</span>
-                <div className="text-gray-600">ใช้ RAM อย่างมีประสิทธิภาพ ลดการใช้ทรัพยากรเกินจำเป็น</div>
-              </li>
-            </ul>
-          </div>
-
-          <div className="md:w-1/2 md:pl-10 mt-10 md:mt-0">
-            <h3 className="text-xl font-bold text-gray-900 mb-2">ผู้ใหญ่ / ผู้สูงอายุ</h3>
-            <p className="text-sm text-gray-600 mb-6">ระบบจิตจดจ่อเสถียรและประสิทธิภาพสูง</p>
-            <ul className="space-y-4 pl-4 list-disc marker:text-teal-400 text-base leading-relaxed">
-              <li>
-                <span className="font-semibold text-gray-800">การเคลื่อนไหว</span>
-                <div className="text-gray-600">รองรับการทำงานร่วมกันในผู้สูงวัยของ Microsoft</div>
-              </li>
-              <li>
-                <span className="font-semibold text-gray-800">กระบวนการความคิดและการสื่อสาร</span>
-                <div className="text-gray-600">ปรับตำแหน่ง VM เพื่อกระจายโหลดอย่างเหมาะสม</div>
-              </li>
-              <li>
-                <span className="font-semibold text-gray-800">ความจำ</span>
-                <div className="text-gray-600">สำรองข้อมูลโดยรักษาสถานะของแอปให้อบอุ่นดี</div>
-              </li>
-              <li>
-                <span className="font-semibold text-gray-800">การนอนหลับ</span>
-                <div className="text-gray-600">รองรับการประมวลผลกราฟิกระดับสูงและ AI/ML</div>
-              </li>
-              <li>
-                <span className="font-semibold text-gray-800">ความเครียด</span>
-                <div className="text-gray-600">รองรับการประมวลผลกราฟิกระดับสูงและ AI/ML</div>
-              </li>
-            </ul>
-          </div>
+        {/* RIGHT */}
+        <div className="flex-1 min-w-0 pr-0 overflow-x-visible">
+          <Swiper
+            slidesPerView={1}
+            spaceBetween={20}
+            breakpoints={{
+              640: { slidesPerView: 1, spaceBetween: 20 },
+              1024: { slidesPerView: 2.5, spaceBetween: 32 },
+              1280: { slidesPerView: 2.5, spaceBetween: 40 },
+            }}
+            // pagination={{ clickable: true }}
+            modules={[Pagination]}
+            className="pb-10"
+          >
+            {data.map((item, idx) => (
+              <SwiperSlide key={`${item.title}-${idx}`} className="flex justify-center select-none">
+                <div className="relative rounded-[32px] overflow-hidden shadow-lg group cursor-pointer w-full max-w-[350px] h-[400px] md:w-[350px] md:h-[700px] bg-gray-200">
+                  <img
+                    src={item.img}
+                    alt={item.title}
+                    className="w-full h-full object-cover transition group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-transparent" />
+                  <div className="absolute top-0 left-0 w-full p-5">
+                    <h3 className="text-title-swiper mb-2">
+                      {item.title}
+                    </h3>
+                    <div className="text-description-swiper">{item.desc}</div>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
     </section>

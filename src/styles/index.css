@@ -4,63 +4,677 @@
 
 @layer components {
 
-  .text-title-main-bold {
-    @apply font-noto font-bold text-[32px] tracking-tighter text-blackText;
+  .text-title-96-gradient {
+    @apply font-noto font-bold tracking-tighter;
+    font-size: clamp(48px, 9vw, 96px);
+    background: linear-gradient(180deg, #FFFFFF 34.54%, #8FF5E3 70.1%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
-  .text-title-info {
-    @apply font-noto font-bold text-[36px] tracking-tighter text-blackText;
+  .text-title-hero {
+    @apply font-noto font-bold tracking-tighter text-blackText;
+    font-size: clamp(32px, 7vw, 80px);
+  }
+
+  .text-title-75 {
+    @apply font-noto font-bold tracking-tighter text-blackText;
+    font-size: clamp(40px, 6vw, 75px);
+  }
+
+  .text-title-64-black {
+    @apply font-noto font-bold tracking-tighter text-blackText;
+    font-size: clamp(40px, 6vw, 64px);
+  }
+
+  .text-title-64-teal {
+    @apply font-noto font-bold tracking-tighter text-tealPrimary;
+    font-size: clamp(40px, 6vw, 64px);
+  }
+
+  .text-title-48 {
+    @apply font-noto font-bold tracking-tighter text-blackText;
+    font-size: clamp(28px, 5vw, 48px);
+  }
+
+  .text-title-40-white {
+    @apply font-noto font-bold tracking-tighter text-white;
+    font-size: clamp(24px, 4vw, 40px);
+  }
+
+  .text-title-36-black-semi {
+    @apply font-noto font-semibold tracking-tighter text-blackText;
+    font-size: clamp(24px, 4vw, 36px);
+  }
+
+  .text-title-32-black {
+    @apply font-noto font-bold tracking-tighter text-blackText;
+    font-size: clamp(20px, 3.5vw, 32px);
+  }
+
+  .text-title-36-black {
+    @apply font-noto font-bold tracking-tighter text-blackText;
+    font-size: clamp(24px, 4vw, 36px);
+  }
+
+  .text-title-48-teal {
+    @apply font-noto font-bold tracking-tighter text-tealPrimary;
+    font-size: clamp(28px, 5vw, 48px);
+  }
+
+  .text-title-36-teal {
+    @apply font-noto font-bold tracking-tighter text-tealPrimary;
+    font-size: clamp(24px, 4vw, 36px);
+  }
+
+  .text-title-32-teal {
+    @apply font-noto font-bold tracking-tighter text-tealPrimary;
+    font-size: clamp(20px, 3.5vw, 32px);
+  }
+
+  .text-title-32-white-on-teal {
+    @apply font-noto font-bold text-white bg-tealPrimary;
+    font-size: clamp(20px, 3.5vw, 32px);
+  }
+
+  .text-title-16-teal {
+    @apply font-noto font-bold tracking-tighter text-tealPrimary;
+    font-size: clamp(12px, 2.5vw, 16px);
+  }
+
+  .text-title-20-teal {
+    @apply font-noto font-bold tracking-tighter text-tealPrimary;
+    font-size: clamp(16px, 2.5vw, 20px);
+  }
+
+  .text-title-24-teal {
+    @apply font-noto font-bold tracking-tighter text-tealPrimary;
+    font-size: clamp(16px, 2.5vw, 24px);
+  }
+
+  /* === Subheading === */
+  .text-heading-16 {
+    @apply font-noto font-medium tracking-normal;
+    font-size: clamp(12px, 3vw, 16px)
+  }
+
+  /* === Subheading === */
+  .text-subheading-20 {
+    @apply font-noto font-medium tracking-normal;
+    font-size: clamp(18px, 3vw, 24px);
+  }
+
+  .text-subheading-32 {
+    @apply font-noto font-medium tracking-normal;
+    font-size: clamp(24px, 4vw, 32px);
+  }
+
+  .text-subheading-20-white {
+    @apply font-noto font-medium tracking-normal text-white;
+    font-size: clamp(18px, 3vw, 24px);
+  }
+
+  .text-subheading-24-white {
+    @apply font-noto font-semibold tracking-normal text-white;
+    font-size: clamp(18px, 3vw, 24px);
+  }
+
+  /* === Body === */
+  .text-body-24-regular {
+    @apply font-noto font-normal tracking-normal text-blackText;
+    font-size: clamp(18px, 3vw, 24px);
+  }
+
+  .text-body-20-regular {
+    @apply font-noto font-normal tracking-normal text-blackText;
+    font-size: clamp(16px, 2.5vw, 20px);
+  }
+
+  .text-body-20-medium {
+    @apply font-noto font-medium tracking-tighter text-blackTextE4;
+    font-size: clamp(16px, 2.5vw, 20px);
+  }
+
+  .text-body-20-medium-30 {
+    @apply font-noto font-medium tracking-normal text-blackTextE4;
+    font-size: clamp(16px, 2.5vw, 20px);
+  }
+
+  .text-body-20-white-36 {
+    @apply font-noto font-bold text-white;
+    font-size: clamp(16px, 2.5vw, 20px);
+  }
+
+  /* === Small Text === */
+  .text-small-14-gray {
+    @apply font-noto font-normal tracking-normal text-grayText;
+    font-size: clamp(12px, 2vw, 14px);
+  }
+
+  .text-small-12-black {
+    @apply font-noto font-normal text-blackText;
+    font-size: clamp(10px, 1.8vw, 12px);
+  }
+
+  .text-small-12-bold-black {
+    @apply font-noto font-semibold text-blackText;
+    font-size: clamp(10px, 1.8vw, 12px);
+  }
+
+  /* === Placeholder === */
+  .placeholder-noto-gray {
+    @apply placeholder-[#1D1D1F4D] font-noto font-normal leading-none;
+    font-size: clamp(14px, 2.2vw, 16px);
+  }
+
+  /* === Font-Size Only Classes (No Color) === */
+  .text-size-96 {
+    @apply font-noto font-bold tracking-tighter;
+    font-size: clamp(48px, 9vw, 96px);
+  }
+
+  .text-size-80 {
+    @apply font-noto font-bold tracking-tighter;
+    font-size: clamp(32px, 7vw, 80px);
+  }
+
+  .text-size-75 {
+    @apply font-noto font-bold tracking-tighter;
+    font-size: clamp(40px, 6vw, 75px);
+  }
+
+  .text-size-64 {
+    @apply font-noto font-bold tracking-tighter;
+    font-size: clamp(40px, 6vw, 64px);
+  }
+
+  .text-size-48 {
+    @apply font-noto font-bold tracking-tighter;
+    font-size: clamp(28px, 5vw, 48px);
+  }
+
+  .text-size-40 {
+    @apply font-noto font-bold tracking-tighter;
+    font-size: clamp(24px, 4vw, 40px);
+  }
+
+  .text-size-36 {
+    @apply font-noto font-semibold tracking-tighter;
+    font-size: clamp(24px, 4vw, 36px);
+  }
+
+  .text-size-32 {
+    @apply font-noto font-bold tracking-tighter;
+    font-size: clamp(20px, 3.5vw, 32px);
+  }
+
+  .text-size-24 {
+    @apply font-noto font-medium tracking-normal;
+    font-size: clamp(18px, 3vw, 24px);
+  }
+
+  .text-size-20 {
+    @apply font-noto font-medium tracking-normal;
+    font-size: clamp(16px, 2.5vw, 20px);
+  }
+
+  .text-size-16 {
+    @apply font-noto font-medium tracking-normal;
+    font-size: clamp(14px, 2.25vw, 16px);
+  }
+
+  .text-size-14 {
+    @apply font-noto font-normal tracking-normal;
+    font-size: clamp(12px, 2vw, 14px);
+  }
+
+  .text-size-12 {
+    @apply font-noto font-normal;
+    font-size: clamp(10px, 1.8vw, 12px);
+  }
+
+  .text-size-10 {
+    @apply font-noto font-normal;
+    font-size: clamp(8px, 1.5vw, 10px);
+  }
+
+  .text-hero-th-gradient {
+    font-family: 'Noto Sans Thai', sans-serif;
+    font-weight: 400;
+    font-size: clamp(32px, 7vw, 90px);
+    line-height: 1.1;
+    letter-spacing: 0;
+    text-align: center;
+    background: linear-gradient(94.28deg, #1D2126 1.8%, #5A9489 80.79%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-hero-en-gradient {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: clamp(28px, 6vw, 90px);
+    line-height: 1.1;
+    text-align: center;
+    background: linear-gradient(180deg, #90E0AB 27.27%, #0FC1A1 40.27%, #106EE8 83.59%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-hero-desc-gradient {
+    font-family: 'Sukhumvit Set', 'Noto Sans Thai', sans-serif;
+    font-weight: 600;
+    font-size: clamp(16px, 2.5vw, 20px);
+    line-height: 1.5;
+    text-align: center;
+    background: linear-gradient(90.65deg, #6B7A8C 0.56%, #7C928E 89.16%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-partner-title-gradient {
+    font-family: 'Sukhumvit Set', 'Noto Sans Thai', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    font-style: normal;
+    line-height: 1.1;
+    letter-spacing: 0;
+    text-align: center;
+    background: linear-gradient(90.65deg, #6B7A8C 0.56%, #7C928E 89.16%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-title-hero {
+    @apply font-noto font-bold tracking-tighter text-blackText;
+    font-size: clamp(32px, 7vw, 80px);
   }
 
   .text-title-main {
-    @apply font-noto text-[32px] tracking-tighter text-blackText;
+    @apply font-noto font-bold text-blackText;
+    font-size: clamp(28px, 5vw, 48px);
+    line-height: 1.1;
   }
 
-  .text-subtitle {
-    @apply font-noto font-normal text-[20px] tracking-tighter text-blackTextB2;
+  .text-title-section {
+    @apply font-noto font-semibold text-blackText;
+    font-size: clamp(22px, 4vw, 36px);
+    line-height: 1.2;
   }
 
-  .text-description {
-    @apply font-noto font-normal text-[20px] tracking-tighter text-blackTextE4;
+  .text-desc-main {
+    @apply font-noto font-normal text-blackText;
+    font-size: clamp(16px, 2.5vw, 20px);
+    line-height: 1.7;
   }
 
-  .text-body-gray {
-    @apply font-noto font-medium text-[16px] tracking-normal text-grayText;
+  .text-label-address {
+    @apply font-noto font-bold text-tealPrimary tracking-tighter;
+    font-size: clamp(17px, 2.6vw, 24px);
   }
 
-  .text-heading-green {
-    @apply font-poppins font-semibold text-[16px] tracking-normal text-tealPrimary;
+  .text-address {
+    @apply font-noto font-normal text-blackText;
+    font-size: clamp(14px, 2.5vw, 18px);
+    line-height: 1.5;
   }
 
-  .text-heading-green-bold {
-    @apply font-noto font-bold text-[20px] tracking-normal text-tealPrimary;
+  .text-btn-main {
+    @apply font-noto font-bold;
+    font-size: clamp(15px, 2vw, 20px);
   }
 
-  .text-title-green {
-    @apply font-noto font-semibold text-[64px] tracking-normal text-tealPrimary;
+  .text-experience-label {
+    @apply font-noto font-semibold text-white;
+    font-size: clamp(16px, 3vw, 36px);
+    line-height: 1.2;
   }
 
-  .text-body-black {
-    @apply font-noto font-medium text-[16px] tracking-normal text-blackText;
+  .text-experience-value {
+    @apply font-noto font-bold text-white;
+    font-size: clamp(20px, 4vw, 36px);
+    line-height: 1;
   }
 
-  .text-body-regular {
-    @apply font-noto font-normal text-[16px] tracking-normal text-blackText;
+  .text-experience-desc {
+    @apply font-noto font-medium text-white;
+    font-size: clamp(13px, 2vw, 20px);
   }
 
-  .text-title-md {
-    @apply font-noto font-bold text-[24px] tracking-tight text-blackText;
+  .text-experience-type {
+    @apply font-noto font-normal text-white;
+    font-size: clamp(11px, 1.8vw, 18px);
   }
 
-  .text-title-sm-bold {
-    @apply font-noto font-bold text-[20px] tracking-tight text-blackText;
+  /* about */
+  .about-nb-logo {
+    @apply font-inter font-medium tracking-tight;
+    color: #0FC1A1;
+    font-size: 20px;
   }
 
-  .text-sm-gray {
-    @apply font-noto font-normal text-[14px] tracking-normal text-gray-500;
+  .about-nb-section-title {
+    @apply font-noto font-semibold tracking-tight;
+    color: #3E3E44;
+    font-size: clamp(22px, 5vw, 40px);
+    line-height: 1;
   }
 
-  .placeholder-noto-gray {
-    @apply placeholder-[#1D1D1F4D] font-noto font-normal text-[16px] leading-none;
+  .about-nb-more-btn {
+    @apply font-noto font-bold;
+    color: #3E3E44;
+    font-size: clamp(15px, 2vw, 20px);
+  }
+
+  /* ========== MAIN BOX LEFT ========== */
+  .about-nb-main-title {
+    @apply font-inter font-semibold tracking-tighter;
+    color: #1D2126;
+    font-size: clamp(32px, 8vw, 96px);
+    line-height: 1.04;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-nb-main-title-medium {
+    @apply font-inter font-medium tracking-tighter;
+    color: #1D2126;
+    font-size: clamp(32px, 8vw, 96px);
+    line-height: 1.04;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-nb-main-subtitle {
+    @apply font-noto font-bold;
+    color: #1D2126;
+    font-size: clamp(16px, 3vw, 24px);
+    margin-bottom: 0.75rem;
+  }
+
+  .about-nb-main-desc {
+    @apply font-noto font-normal;
+    color: #3E3E44;
+    font-size: clamp(13px, 2.8vw, 20px);
+    line-height: 1.8;
+  }
+
+  /* ========== ADDRESS BOX LEFT ========== */
+  .about-nb-address-title {
+    @apply font-noto font-extrabold leading-tight;
+    color: #1D2126;
+    font-size: clamp(16px, 3vw, 24px);
+    margin-bottom: 0.5rem;
+  }
+
+  .about-nb-address-desc {
+    @apply font-noto font-normal;
+    color: #1D2126;
+    font-size: clamp(12px, 2.5vw, 18px);
+    line-height: 1.5;
+    margin-bottom: 1.2rem;
+  }
+
+  .about-nb-contact-btn {
+    @apply font-noto font-bold;
+    font-size: clamp(14px, 2.5vw, 20px);
+    color: #fff;
+    background: #111;
+    border-radius: 9999px;
+    padding: 10px 20px;
+    margin-top: 0.5rem;
+    display: inline-block;
+    transition: background 0.15s;
+  }
+
+  .about-nb-contact-btn:hover {
+    background: #444;
+  }
+
+  /* ========== OVERLAY/EXPERIENCE (RIGHT) ========== */
+  .about-nb-ex-label {
+    @apply font-noto font-semibold;
+    color: #fff;
+    font-size: clamp(17px, 4vw, 36px);
+    line-height: 1.2;
+    margin-bottom: 0.25rem;
+  }
+
+  .about-nb-ex-desc {
+    @apply font-noto font-medium;
+    color: #fff;
+    font-size: clamp(12px, 2.5vw, 20px);
+    margin-bottom: 1.25rem;
+  }
+
+  .about-nb-ex-num {
+    @apply font-noto font-bold leading-none;
+    color: #fff;
+    font-size: clamp(14px, 4vw, 32px);
+  }
+
+  .about-nb-ex-type {
+    @apply font-noto font-normal;
+    color: #fff;
+    font-size: clamp(9px, 2vw, 18px);
+    margin-top: 0.25rem;
+  }
+
+  .about-nb-ex-box {
+    @apply flex flex-col items-center justify-center;
+    background: linear-gradient(114deg, rgba(234, 234, 234, 0.38) 12%, rgba(193, 163, 127, 0.18) 100%);
+    border-radius: 18px;
+    box-shadow: 0 2px 16px 0 rgba(64, 62, 76, 0.09);
+    min-width: 100px;
+    min-height: 75px;
+    padding: 1rem 2rem;
+    margin-bottom: 0;
+    backdrop-filter: blur(2.5px);
+    -webkit-backdrop-filter: blur(2.5px);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+  }
+
+  /* Responsive for iPad/Mini */
+  @media (max-width: 1024px) {
+    .about-nb-main-title {
+      font-size: clamp(28px, 7vw, 64px);
+    }
+
+    .about-nb-main-desc,
+    .about-nb-address-desc {
+      font-size: clamp(12px, 2.8vw, 16px);
+    }
+
+    .about-nb-ex-box {
+      min-width: 90px;
+      min-height: 65px;
+      padding: 0.6rem 0.8rem;
+      margin: 0 4px;
+    }
+  }
+
+  .text-eyebrow-en {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: clamp(16px, 2vw, 20px);
+    line-height: 100%;
+    letter-spacing: -0.01em;
+    text-align: center;
+    color: #0FC1A1;
+  }
+
+  .text-heading-th {
+    font-family: 'Noto Sans Thai', sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: clamp(32px, 5vw, 64px);
+    line-height: 100%;
+    letter-spacing: -0.01em;
+    color: #1D2126;
+  }
+
+  .text-desc-th {
+    font-family: 'Noto Sans Thai', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: clamp(16px, 2vw, 20px);
+    line-height: 36px;
+    letter-spacing: 0;
+    color: #4A4A53;
+  }
+
+  .text-service-title {
+    font-family: 'Noto Sans Thai', sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: clamp(24px, 3vw, 36px);
+    line-height: 100%;
+    letter-spacing: -0.01em;
+    color: #1D2126;
+  }
+
+  .text-service-desc {
+    font-family: 'Noto Sans Thai', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: clamp(16px, 2vw, 20px);
+    line-height: 100%;
+    letter-spacing: 0;
+    color: #4A4A53;
+  }
+
+  .text-link-th {
+    font-family: 'Noto Sans Thai', sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: clamp(16px, 2vw, 20px);
+    line-height: 100%;
+    letter-spacing: 0;
+    color: #0FC1A1;
+  }
+
+  .about-nb-more-btn-text {
+    font-family: 'Noto Sans Thai', sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: clamp(16px, 1.5vw, 20px);
+    line-height: 100%;
+    letter-spacing: -0.01em;
+    color: #4A4A53;
+  }
+
+  .text-eyebrow {
+    font-family: 'Noto Sans Thai', sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    /* 24px */
+    line-height: 2rem;
+    color: #0FC1A1;
+  }
+
+  .text-heading {
+    font-family: 'Noto Sans Thai', sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: clamp(2.5rem, 4vw, 3rem);
+    /* 48px */
+    line-height: clamp(3rem, 4.25vw, 4.25rem) !important;
+    white-space: pre-line;
+    color: #222225;
+  }
+
+  .text-title-swiper {
+    font-family: 'Noto Sans Thai', sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: clamp(2.5rem, 4vw, 3rem);
+    /* 48px */
+    line-height: 100%;
+    color: white;
+  }
+
+  .text-description-swiper {
+    font-family: 'Noto Sans Thai', sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    /* 24px */
+    line-height: 100%;
+    white-space: pre-line;
+    color: white;
+  }
+
+  .nav-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-style: semi-bold;
+    font-size: clamp(16px, 1.8vw, 20px);
+    line-height: 100%;
+    letter-spacing: 0;
+    color: white;
+    vertical-align: middle;
+  }
+
+  .score-header {
+    @apply font-noto;
+    font-size: clamp(56px, 10vw, 128px);
+    font-style: semi-bold;
+    line-height: 100%;
+    letter-spacing: 0;
+  }
+
+  .score-title {
+    @apply font-noto;
+    font-size: clamp(40px, 6vw, 64px);
+    line-height: 100%;
+    letter-spacing: 0;
+  }
+
+  .choice-title {
+    @apply font-noto font-normal;
+    font-size: clamp(14px, 2.2vw, 16px);
+    line-height: 100%;
+    letter-spacing: 0;
+    color: #374151;
+  }
+
+  .choice-button-text {
+    @apply font-noto font-medium;
+    font-size: clamp(14px, 2.2vw, 16px);
+    line-height: 100%;
+    letter-spacing: 0;
+    color: #374151;
+  }
+
+  .choice-text-white {
+    @apply font-noto font-bold;
+    font-size: clamp(14px, 2.2vw, 16px);
+    line-height: 100%;
+    letter-spacing: 0;
+    color: white;
+  }
+
+  #appointment {
+    scroll-margin-top: 150px;
+  }
+
+  .nb-equal .swiper-wrapper {
+    align-items: stretch;
+  }
+
+  .nb-equal .swiper-slide {
+    height: auto;
+  }
+
+  .nb-equal .swiper-slide>* {
+    height: 100%;
   }
 }

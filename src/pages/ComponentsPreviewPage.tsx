@@ -6,6 +6,7 @@ import InfoCard from "../components/common/InfoCard";
 import SymptomCard from "../components/common/SymptomCard";
 import CoreValueCard from "../components/common/CoreValueCardProps";
 import SplitSection, { Stat } from "../components/common/AboutExperienceSection";
+import ReviewCard from "../components/common/ReviewCard";
 
 export default function ComponentsPreviewPage() {
   const [text, setText] = useState("");
@@ -123,7 +124,11 @@ export default function ComponentsPreviewPage() {
             image="/medicine.png"
             footer={
               <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center text-white text-2xl">
-                →
+                <img
+                  src="/icons/ArrowRight.svg"
+                  alt="Arrow Right"
+                  className="w-4 h-4"
+                />
               </div>
             }
           />
@@ -134,7 +139,11 @@ export default function ComponentsPreviewPage() {
             image="/medicine.png"
             footer={
               <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center text-white text-2xl">
-                →
+                <img
+                  src="/icons/ArrowRight.svg"
+                  alt="Arrow Right"
+                  className="w-4 h-4"
+                />
               </div>
             }
           />
@@ -218,7 +227,15 @@ export default function ComponentsPreviewPage() {
         />
       </section>
 
+      <section className="max-w-[1440px] mx-auto px-6 lg:px-0 space-y-28">
+        <ReviewCard
+          review="แรกเริ่มจะได้ทำ brain map ก่อน..."
+          score={4.8}
+          userName="YU"
+          reviewedDate="2025-07-02"
+        />
 
+      </section>
     </div>
   );
 }

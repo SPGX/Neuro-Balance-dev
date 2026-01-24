@@ -47,7 +47,9 @@ export default function SymptomCard({
             {/* Action Button */}
             <div className="absolute bottom-6 right-6">
                 <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center text-white text-lg shadow-md">
-                    →
+                    <svg width="24" height="24" fill="none" stroke="#1D2126" strokeWidth="2" viewBox="0 0 24 24">
+                        <path d="M9 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
                 </div>
             </div>
         </div>

@@ -1,130 +1,67 @@
-import React, { useEffect, useState } from 'react';
-import SplitSection, { Stat } from '../components/common/AboutExperienceSection';
-import CoreValueCard from '../components/common/CoreValueCardProps';
-import InfoCard from '../components/common/InfoCard';
-import { fetchAboutData } from '../lib/api';
-function getImageUrl(imageSource: any, size: 'large' | 'medium' = 'large'): string {
-  const baseApiUrl = import.meta.env.VITE_API_URL;
-  const baseUrl = baseApiUrl.replace('/api', ''); // ✨ remove /api
-  const img = Array.isArray(imageSource) ? imageSource[0] : imageSource;
-
-  const url = img?.formats?.[size]?.url ?? img?.url ?? '';
-  return url ? baseUrl + url : '/images/placeholder.png';
-}
-
-
-
-interface AboutData {
-  banners: {
-    title: string;
-    description: string;
-    image: string;
-  }[];
-  about: {
-    title: string;
-    description: string;
-    image: string;
-  };
-  experience: {
-    title: string;
-    subTitle: string;
-    description: string;
-    image: string;
-    stats: Stat[];
-    partners: string[];
-  };
-  promos: {
-    title: string;
-    description: string;
-  }[];
-}
+// src/pages/AboutPage.tsx
+import React from 'react'
+import useSWR from 'swr'
+import SplitSection from '../components/common/AboutExperienceSection'
+import CoreValueCard from '../components/common/CoreValueCardProps'
+import InfoCard from '../components/common/InfoCard'
+import { fetchAboutPageData, type AboutData } from '../lib/aboutapi'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import { Pagination } from 'swiper/modules'
+import LoadingScreen from '../components/common/LoadingScreen'
+import { useLanguage } from '../i18n/LanguageProvider'
 
 export default function AboutPage() {
-  const [aboutData, setAboutData] = useState<AboutData | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const { lang } = useLanguage()
 
-  useEffect(() => {
-    const loadData = async () => {
-      try {
-        const json = await fetchAboutData();
-        const data = json.data;
+  const { data: aboutData, error, isLoading } = useSWR<AboutData>(
+    ['about-us', lang],
+    () => fetchAboutPageData(lang),
+    { revalidateOnFocus: false }
+  )
+  const DEFAULT_PARTNERS = [
+    '/partners/partner1.svg',
+    '/partners/partner2.svg',
+    '/partners/partner3.svg',
+    '/partners/partner4.svg',
+    '/partners/partner5.svg',
+    '/partners/partner6.svg',
+  ];
 
-        const rawBanners = Array.isArray(data.banner) ? data.banner : [data.banner];
+  const partnersList = DEFAULT_PARTNERS;
 
-        const banners = rawBanners.map((b: any) => ({
-          title: b.title,
-          description: b.description,
-          image: getImageUrl(b.image),
-        }));
-
-        const about = {
-          title: data.about.title,
-          description: data.about.description,
-          image: getImageUrl(data.about.image),
-        };
-
-        const experience = {
-          title: data.experience.title,
-          subTitle: data.experience.subTitle,
-          description: data.experience.description,
-          image: getImageUrl(data.experience.image),
-          stats: data.experience.cases.map((c: any) => ({
-            value: c.number.toLocaleString(),
-            label: c.case,
-          })),
-          partners: data.experience.ourPartner.map((p: any) => getImageUrl(p)),
-        };
-
-        const promos = data.appPromo.contents.map((p: any) => ({
-          title: p.title,
-          description: p.description,
-        }));
-
-        setAboutData({ banners, about, experience, promos });
-      } catch (err) {
-        console.error('❌ Failed to load about data:', err);
-        setError('โหลดข้อมูลไม่สำเร็จ');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadData();
-  }, []);
-
-  if (loading) return <div className="text-center py-10">กำลังโหลด...</div>;
-  if (error || !aboutData)
-    return <div className="text-center text-red-500 py-10">{error}</div>;
+  if (isLoading) return <LoadingScreen />
+  if (error || !aboutData) return <div className="text-center text-red-500 py-10">โหลดข้อมูลไม่สำเร็จ</div>
 
   return (
-    <div className="pt-10 space-y-28">
-      <section className="w-full max-w-[1440px] mx-auto relative pt-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 overflow-hidden rounded-[16px] shadow-xl">
-          {aboutData.banners.map((b) => (
+    <div className="pt-10 space-y-10 sm:space-y-28 mt-3 sm:mt-24">
+      <section className="max-w-[1440px] px-5 lg:px-9 md:px-9 sm:px-9 mx-auto relative pt-8">
+        <div className="grid grid-cols-1 overflow-hidden rounded-[16px] shadow-2xl">
+          {aboutData.banners.map((b, i) => (
             <CoreValueCard
-              key={b.title}
+              key={`banner-${(b as any)?.id ?? `${b.title}-${i}`}`}
               title={b.title}
               description={b.description}
               image={b.image}
             />
           ))}
         </div>
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-4">
-          <button className="px-8 py-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-semibold shadow-md hover:opacity-90">
+        {/* <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-4 flex-row w-full flex-wrap justify-center">
+          <button className="w-[clamp(160px,20vw,212px)] h-[clamp(40px,5vw,46px)] px-[clamp(16px,4vw,32px)] rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-[clamp(14px,1.5vw,20px)] font-semibold shadow-md hover:opacity-90">
             ปรึกษาฟรี
           </button>
-          <button className="px-8 py-2 rounded-full bg-white text-gray-800 font-semibold shadow-md hover:bg-gray-100">
+          <button className="w-[clamp(120px,12vw,140px)] h-[clamp(40px,5vw,46px)] px-[clamp(16px,4vw,32px)] rounded-full bg-white bg-opacity-30 text-white text-[clamp(14px,1.5vw,20px)] font-semibold shadow-md hover:bg-gray-100 hover:text-gray-800 hover:bg-opacity-70">
             ติดต่อเรา
           </button>
-        </div>
+        </div> */}
       </section>
 
-      <section className="max-w-[1440px] mx-auto px-6 lg:px-0 space-y-28">
+      <section className="max-w-[1440px] mx-auto px-6 lg:pr-9 space-y-0 sm:space-y-28">
         <SplitSection
           eyebrow={aboutData.about.title}
           title="Neuro Balance"
-          description={<p>{aboutData.about.description}</p>}
+          description={aboutData.about.description}
           image={aboutData.about.image}
           reverse
         />
@@ -132,38 +69,60 @@ export default function AboutPage() {
         <SplitSection
           eyebrow={aboutData.experience.title}
           title={aboutData.experience.subTitle}
-          description={<p>{aboutData.experience.description}</p>}
+          description={aboutData.experience.description}
           image={aboutData.experience.image}
           stats={aboutData.experience.stats}
-          partners={aboutData.experience.partners}
+          partners={partnersList}
         />
       </section>
 
       <section className="bg-gray-100 py-20">
         <div className="max-w-[1440px] mx-auto px-6">
-          <h5 className="text-teal-600 font-semibold mb-2">ทำไมต้อง</h5>
-          <h2 className="text-4xl lg:text-5xl font-extrabold mb-10">
-            NEUROBALANCE
-          </h2>
+          <h5 className="text-title-20-teal mb-2">{aboutData.promoTitleTh}</h5>
+          <h2 className="text-title-64-black mb-10">{aboutData.promoTitleEng}</h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {aboutData.promos.map(({ title, description }) => (
-              <InfoCard
-                key={title}
-                variant="highlight"
-                title={title}
-                description={description}
-                image="/images/placeholder.png"
-                footer={
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center text-white text-2xl">
-                    →
+          <div className="relative">
+            <Swiper className="py-4"
+              modules={[Pagination]}
+              observer
+              observeParents
+              watchOverflow
+              onBeforeInit={(swiper) => {
+                swiper.params.pagination = {
+                  ...(swiper.params.pagination as any),
+                  el: '.nb-card-pagination',
+                  clickable: true,
+                } as any;
+              }}
+              breakpoints={{
+                0: { slidesPerView: 1, spaceBetween: 16 },
+                640: { slidesPerView: 2, spaceBetween: 20 },
+                1024: { slidesPerView: 3, spaceBetween: 24 },
+              }}
+            >
+              {aboutData.promos.map((p, idx) => (
+                <SwiperSlide key={`promo-${p.id ?? idx}`} className="!h-auto">
+                  <div className="h-full max-w-[420px] w-full mx-auto">
+                    <InfoCard
+                      variant="highlight"
+                      title={p.title}
+                      description={p.description}
+                      image={p.image || '/images/placeholder.png'}
+                      // footer={
+                      //   <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center text-white text-2xl shadow-lg">
+                      //     <img src="/icons/ArrowRight.svg" alt="Arrow Right" className="w-4 h-4" />
+                      //   </div>
+                      // }
+                     />
                   </div>
-                }
-              />
-            ))}
+                </SwiperSlide>
+              ))}
+            </Swiper>
+
+            <div className="nb-card-pagination flex justify-center mt-6" />
           </div>
         </div>
-      </section>
+      </section >
     </div>
-  );
+  )
 }
