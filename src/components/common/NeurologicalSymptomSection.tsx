@@ -45,7 +45,7 @@ export default function NeurologicalSymptomSection() {
 
     return (
         <div className='w-full'>
-            <section className="px-6 sm:px-11 mt-24 sm:mt-40 mb-14 max-w-[1440px] mx-auto">
+            <section className="px-6 sm:px-11 mt-24 sm:mt-30 mb-14 max-w-[1440px] mx-auto">
                 <ContentBlock
                     variant="hero"
                     title={data.banner?.title}

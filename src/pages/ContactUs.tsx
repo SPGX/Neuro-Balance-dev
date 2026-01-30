@@ -127,7 +127,7 @@ export default function ContactUs() {
     if (error) return <div className="text-center text-red-500 py-10">{error}</div>;
 
     return (
-        <section className="max-w-[1200px] mx-auto px-4 py-3 sm:py-16 mt-20">
+        <section className="max-w-[1200px] mx-auto px-4 py-3 sm:py-16 mt-20 sm:mt-10">
             <div className="grid md:grid-cols-2 gap-8 items-start">
                 <div className="bg-white rounded-[24px] shadow-md">
                     <div className="w-full h-[450px] overflow-hidden mb-6">

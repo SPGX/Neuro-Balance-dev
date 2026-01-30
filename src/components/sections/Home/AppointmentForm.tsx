@@ -33,12 +33,6 @@ export default function AppointmentSection() {
     return `${d}/${m}/${y}`;
   }, [form.dateRaw]);
 
-  const isFormValid =
-    form.name.trim() &&
-    form.email.trim() &&
-    form.phoneNumber.trim() &&
-    form.lineID.trim()
-
   const setField =
     (key: keyof FormState) =>
       (val: string) =>
@@ -51,6 +45,12 @@ export default function AppointmentSection() {
     const dt = new Date(y, m - 1, d, 9, 0, 0, 0);
     return dt.toISOString();
   }
+
+  const isFormValid =
+    form.name.trim() &&
+    form.email.trim() &&
+    form.phoneNumber.trim() &&
+    form.lineID.trim();
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -162,7 +162,7 @@ export default function AppointmentSection() {
             shadow-xl
           "
         >
-          <h3 className="text-lg sm:text-3xl font-bold text-gray-900 mb-2 text-center">ทำการนัดหมาย</h3>
+          <h3 className="text-lg sm:text-3xl font-bold text-gray-900 mb-7 text-center">ทำการนัดหมาย</h3>
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6">
               <div className="relative w-full">
@@ -289,16 +289,14 @@ export default function AppointmentSection() {
             <div className="flex justify-center pt-4">
               <button
                 type="submit"
-                disabled={submitting || !isFormValid}
-                className={`w-auto py-2.5 px-20 font-bold rounded-full transition text-lg shadow
-    ${submitting || !isFormValid
-                    ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                    : "bg-gradient-to-l from-[#00AAFF] to-[#106EE8] text-white hover:opacity-90"
+                disabled={submitting}
+                className={`w-auto py-2.5 px-20 font-bold rounded-full transition text-lg shadow ${submitting || !isFormValid
+                  ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                  : "bg-gradient-to-l from-[#00AAFF] to-[#106EE8] text-white hover:opacity-90"
                   }`}
               >
                 {submitting ? "กำลังส่ง..." : "ยืนยัน"}
               </button>
-
             </div>
 
             {message && (

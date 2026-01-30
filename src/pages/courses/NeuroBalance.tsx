@@ -101,7 +101,7 @@ export default function NeuroBalancePage() {
 
     return (
         <>
-            <section className="max-w-[1440px] mx-auto py-20 mt-3 sm:mt-24">
+            <section className="max-w-[1440px] mx-auto py-20 mt-6 sm:mt-4">
                 <div className="px-6 sm:px-11">
                     <ContentBlock
                         variant="hero"

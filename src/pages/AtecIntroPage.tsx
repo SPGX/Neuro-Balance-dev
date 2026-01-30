@@ -37,7 +37,7 @@ export default function AtecIntroPage() {
                     <p className="mt-4 font-bold">
                         คำชี้แจง: ข้อมูลที่ท่านตอบในแบบประเมินนี้สำหรับผู้ปกครอง หรือผู้ดูแลเด็ก กรุณาอ่านคำถามต่อไปนี้โดยละเอียดและ
                     </p>
-                    <p className="mt-4 text-[20px] text-[#106EE8] font-medium border border-[#106EE8] rounded-full px-6 py-2 inline-block">
+                    <p className="mt-4 text-[16px] sm:text-[20px] text-[#106EE8] font-medium border border-[#106EE8] rounded-full px-5 py-2 sm:px-6 inline-block">
                         เลือกคำตอบที่ท่านคิดว่าเด็กในคำอธิบายพฤติกรรมมีความถี่ตามที่เกิดขึ้นภายใน 1 เดือนที่ผ่านมา
                     </p>
                 </div>

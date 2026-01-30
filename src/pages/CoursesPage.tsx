@@ -36,7 +36,7 @@ export default function CoursesPage() {
 
     return (
         <section className="bg-gray-50 py-20">
-            <div className="px-6 sm:px-11 mt-3 sm:mt-20">
+            <div className="px-6 mt-6 sm:mt-4">
                 <ContentBlock
                     variant="hero"
                     title={bannerInfo?.titleEng || ''}

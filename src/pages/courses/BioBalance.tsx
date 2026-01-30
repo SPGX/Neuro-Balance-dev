@@ -34,24 +34,24 @@ export default function BioBalancePage() {
 
     return (
         <>
-        <section className="max-w-[1440px] mx-auto pt-20 mt-3 sm:mt-24">
-            <div className="px-6 sm:px-11">
-            <ContentBlock
-                variant="hero"
-                title={data.banner.titleEng}
-                label={data.banner.titleTh}
-                bgImage={data.banner.image}
-                size="lg"
-            />
-            </div>
-            <div className="px-6 sm:px-11 mt-8">
-                <Breadcrumb path={['คอร์สเทรนนิ่ง', data.banner.titleEng]} />
-            </div>
+            <section className="max-w-[1440px] mx-auto pt-20 mt-6 sm:mt-4">
+                <div className="px-6 sm:px-11">
+                    <ContentBlock
+                        variant="hero"
+                        title={data.banner.titleEng}
+                        label={data.banner.titleTh}
+                        bgImage={data.banner.image}
+                        size="lg"
+                    />
+                </div>
+                <div className="px-6 sm:px-11 mt-8">
+                    <Breadcrumb path={['คอร์สเทรนนิ่ง', data.banner.titleEng]} />
+                </div>
 
-            <QuoteBlock>{parse(data.foreword)}</QuoteBlock>
-            
-        </section>
-        <IntroBlock
+                <QuoteBlock>{parse(data.foreword)}</QuoteBlock>
+
+            </section>
+            <IntroBlock
                 title={data.intro.title}
                 icon={data.intro.icon}
                 description={data.intro.description}

@@ -529,7 +529,7 @@ export default function AtecQuestionPage() {
   }
 
   return (
-    <div className="lg:mt-40 md:mt-20 flex flex-col lg:flex-row gap-6 px-4 md:px-10 lg:px-24 py-20 relative">
+    <div className="lg:mt-10 md:mt-20 flex flex-col lg:flex-row gap-6 px-4 md:px-10 lg:px-24 py-20 relative">
       <ProgressSidebar />
       <main className="w-full lg:w-2/3 flex flex-col">
         <div className="bg-white rounded-2xl shadow p-6 border border-gray-200 h-[700px] flex flex-col">

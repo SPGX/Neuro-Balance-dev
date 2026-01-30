@@ -39,8 +39,8 @@ export default function NeuroFeedbackSection() {
   return (
     <section className="py-12 px-10 sm:py-16 sm:px-6 md:px-10">
       <div className="max-w-2xl mx-auto text-center mb-8 sm:mb-12">
-        <p className="text-teal-500 font-bold text-sm sm:text-base md:text-lg mb-1">{t.eyebrow}</p>
-        <h1 className="text-2xl sm:text-4xl md:text-5xl font-medium text-gray-900 mb-3 sm:mb-4">
+        <p className="text-teal-500 font-medium text-sm sm:text-base md:text-lg mb-1">{t.eyebrow}</p>
+        <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">
           {t.heading}
         </h1>
         <p className="text-gray-600 text-sm sm:text-base">

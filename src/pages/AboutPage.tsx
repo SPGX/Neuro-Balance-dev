@@ -35,7 +35,7 @@ export default function AboutPage() {
   if (error || !aboutData) return <div className="text-center text-red-500 py-10">โหลดข้อมูลไม่สำเร็จ</div>
 
   return (
-    <div className="pt-10 space-y-10 sm:space-y-28 mt-3 sm:mt-24">
+    <div className="pt-[64px] space-y-10 sm:space-y-20">
       <section className="max-w-[1440px] px-5 lg:px-9 md:px-9 sm:px-9 mx-auto relative pt-8">
         <div className="grid grid-cols-1 overflow-hidden rounded-[16px] shadow-2xl">
           {aboutData.banners.map((b, i) => (
@@ -97,7 +97,7 @@ export default function AboutPage() {
               breakpoints={{
                 0: { slidesPerView: 1, spaceBetween: 16 },
                 640: { slidesPerView: 2, spaceBetween: 20 },
-                1024: { slidesPerView: 3, spaceBetween: 24 },
+                1024: { slidesPerView: 5, spaceBetween: 24 },
               }}
             >
               {aboutData.promos.map((p, idx) => (
@@ -108,12 +108,12 @@ export default function AboutPage() {
                       title={p.title}
                       description={p.description}
                       image={p.image || '/images/placeholder.png'}
-                      // footer={
-                      //   <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center text-white text-2xl shadow-lg">
-                      //     <img src="/icons/ArrowRight.svg" alt="Arrow Right" className="w-4 h-4" />
-                      //   </div>
-                      // }
-                     />
+                    // footer={
+                    //   <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center text-white text-2xl shadow-lg">
+                    //     <img src="/icons/ArrowRight.svg" alt="Arrow Right" className="w-4 h-4" />
+                    //   </div>
+                    // }
+                    />
                   </div>
                 </SwiperSlide>
               ))}

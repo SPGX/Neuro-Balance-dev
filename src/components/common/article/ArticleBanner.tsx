@@ -10,7 +10,7 @@ interface ArticleBannerProps {
 
 export default function ArticleBanner({ imageUrl, title, subTitle, firstBreadcrumb }: ArticleBannerProps) {
     return (
-        <div className="relative w-full h-[300px] md:h-[500px] lg:h-[600px] border md:mt-24 sm:mt-10 mt-10">
+        <div className="relative w-full h-[300px] md:h-[500px] lg:h-[600px] border sm:mt-10 mt-10">
             {firstBreadcrumb && <div className="absolute mt-11 md:mx-16 inset-0 z-10 mx-0 " >
                 <Breadcrumb path={[firstBreadcrumb, title]} isBanner />
             </div>}
