@@ -82,7 +82,7 @@ export default function Navbar() {
       <div className="w-full bg-white/90 backdrop-blur-md shadow-sm md:hidden">
         <div className="py-2 h-[64px] flex items-center">
           <Link to="/" className="flex items-center">
-            <img src="/neuro_logo.svg" alt="Logo" className="w-[136px] h-auto" />
+            <img src="/neuro_logo.svg" alt="Logo" className="h-auto" />
           </Link>
 
           <div className="ml-auto flex items-center gap-3">
@@ -111,7 +111,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      <nav className="w-full bg-white/90 backdrop-blur-md shadow-sm hidden md:block">
+      <nav className="w-full bg-white/0 hidden md:block">
         <div className="max-w-7xl mx-auto px-6 py-0 h-[56px] grid grid-cols-[auto_1fr_auto] items-center">
           <Link to="/" className="flex items-center justify-self-start">
             <img
@@ -130,6 +130,7 @@ export default function Navbar() {
                   className={({ isActive }) =>
                     [
                       'cursor-pointer transition-colors',
+                      isActive ? 'border-b-2 border-teal-600' : '',
                       isActive ? 'text-teal-600' : 'hover:text-teal-600'
                     ].join(' ')
                   }

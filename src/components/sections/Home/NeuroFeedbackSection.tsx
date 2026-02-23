@@ -1,33 +1,37 @@
 import FadeInSection from "../../common/FadeInSection";
 import { useLanguage } from "../../../i18n/LanguageProvider";
 
-type Item = { icon: string; title: string; desc: string };
+type Item = { icon: string; title: string; desc: string; };
 
-const COPY: Record<'th' | 'en', { eyebrow: string; heading: string; sub: string; items: Item[] }> = {
+const COPY: Record<
+  "th" | "en",
+  { eyebrow: string; heading: string; sub: string; items: Item[]; }
+> = {
   th: {
     eyebrow: "ทำไมต้อง",
     heading: "NEUROBALANCE",
     sub: "เราทำการปรับสมดุลแบบองค์รวมด้วยนวัตกรรมและเทคโนโลยีที่ทันสมัย",
     items: [
-      { icon: "/home/feedback1.svg", title: "มั่นใจ ปลอดภัย ไม่ใช้ยา", desc: "กระบวนการของเราปลอดภัย มีประสิทธิภาพสูงและไม่มีการใช้ยา" },
-      { icon: "/home/feedback2.svg", title: "ปรับสมดุลร่างกาย", desc: "ด้วยกระบวนการ Bio Balance สามารถปรับสมดุลของร่างกายให้สมดุลและแข็งแรง" },
-      { icon: "/home/feedback3.svg", title: "ปรับสมดุลสมอง", desc: "เราทำการปรับสมดุลของสมองด้วยเทคนิคการทำ Neurofeedback เพื่อเสริมประสิทธิภาพสมอง" },
-      { icon: "/home/feedback4.svg", title: "เพิ่มศักยภาพของสมอง", desc: "ช่วยเพิ่มศักยภาพด้านการเรียนรู้ ความจำ และการคิดวิเคราะห์ให้ดียิ่งขึ้น" },
-      { icon: "/home/feedback5.svg", title: "คุณภาพชีวิตที่ดีขึ้น", desc: "สมอง ร่างกาย และจิตใจที่ดีขึ้น นำไปสู่คุณภาพชีวิตที่ดียิ่งขึ้น" },
-      { icon: "/home/feedback6.svg", title: "เห็นผลในระยะยาว", desc: "ผลลัพธ์จากการฝึก Neurofeedback อยู่ได้นาน และไม่มีผลข้างเคียง" },
+      { icon: "/home/feedback1.svg", title: "มั่นใจ ปลอดภัย ไม่ใช้ยา", desc: "กระบวนการของเราปลอดภัยมีประสิทธิภาพสูงและไม่มีการใช้ยา" },
+      { icon: "/home/feedback2.svg", title: "ปรับสมดุลร่างกาย", desc: "ด้วยกระบวนการ Bio Balance สามารถปรับสมดุลของร่างกายให้.." },
+      { icon: "/home/feedback3.svg", title: "ปรับสมดุลสมอง", desc: "เราทำการปรับสมดุลของสมองด้วยเทคนิคการทำ Neurofeedback" },
+      { icon: "/home/feedback4.svg", title: "สามารถเพิ่มศักยภาพของสมอง", desc: "เพิ่มประสิทธิภาพศักยภาพและปรับสมดุลของสมองให้เกิดการเรียนรู้ที่ดีขึ้น" },
+      { icon: "/home/feedback5.svg", title: "สร้างคุณภาพชีวิตที่ดีขึ้น", desc: "ทำให้สมอง ร่างกาย สุขภาพ จิตใจดีขึ้น นำไปสู่คุณภาพชีวิตดีขึ้น" },
+      { icon: "/home/feedback6.svg", title: "ให้ผลดีในระยะยาว", desc: "การฝึกทำให้สมองเกิดการปรับการทำงาน และไม่มีผลข้างเคียงใดๆ" },
     ],
   },
+
   en: {
     eyebrow: "Why",
     heading: "NEUROBALANCE",
-    sub: "Bringing holistic balance to life through advanced innovation and technology",
+    sub: "We restore holistic balance with modern innovation and advanced technology.",
     items: [
-      { icon: "/home/feedback1.svg", title: "Safe, Drug-Free, and Trusted", desc: "Our process is safe, highly effective, and completely drug-free" },
-      { icon: "/home/feedback2.svg", title: "Body Balance", desc: "Bio Balance helps rebalance your body, allowing you to improve strength and stability" },
-      { icon: "/home/feedback3.svg", title: "Brain Balance", desc: "We restore brain balance using Neurofeedback techniques" },
-      { icon: "/home/feedback4.svg", title: "Enhance your brain’s potential", desc: "Boost brain performance, capability, and balance for improved learning" },
-      { icon: "/home/feedback5.svg", title: "Create a better quality of life.", desc: "Improve brain, body, and mental health—leading to a higher quality of life" },
-      { icon: "/home/feedback6.svg", title: "Deliver long-lasting benefits.", desc: "Training promotes optimal brain function with no side effects" },
+      { icon: "/home/feedback1.svg", title: "Safe, Trusted, Drug-Free", desc: "Our approach is safe, highly effective, and does not use medication." },
+      { icon: "/home/feedback2.svg", title: "Body Balance", desc: "With Bio Balance, we help rebalance your body for better stability and strength.." },
+      { icon: "/home/feedback3.svg", title: "Brain Balance", desc: "We rebalance the brain using Neurofeedback techniques." },
+      { icon: "/home/feedback4.svg", title: "Enhance Brain Potential", desc: "Improve performance and balance to support better learning and focus." },
+      { icon: "/home/feedback5.svg", title: "Better Quality of Life", desc: "Support brain, body, and mental well-being—leading to a better daily life." },
+      { icon: "/home/feedback6.svg", title: "Long-Term Benefits", desc: "Training helps the brain adapt and function better, with no side effects." },
     ],
   },
 };
@@ -55,28 +59,62 @@ export default function NeuroFeedbackSection() {
           sm:max-w-5xl lg:max-w-6xl mx-auto
         "
       >
-        {t.items.map(({ icon, title, desc }, i) => (
-          <FadeInSection key={title} delay={i * 0.08}>
-            <div
-              className="
-                flex items-start gap-4 p-0
-                sm:flex-col sm:items-center sm:text-center sm:bg-white sm:rounded-2xl sm:py-8 sm:px-4
-                bg-transparent
-              "
-            >
-              <img
-                src={icon}
-                alt={title}
-                className="w-14 h-14 flex-shrink-0 mt-2 sm:w-20 sm:h-20 sm:mb-4 sm:mt-0"
-                loading="lazy"
-              />
-              <div className="flex-1">
-                <h4 className="font-semibold text-gray-800 mb-1 text-base sm:text-lg">{title}</h4>
-                <p className="text-gray-600 text-sm sm:text-base leading-relaxed">{desc}</p>
+        {t.items.map(({ icon, title, desc }, i) => {
+          const n = String(i + 1).padStart(2, "0");
+          const isFirst = i === 0;
+
+          return (
+            <FadeInSection key={title} delay={i * 0.08}>
+              <div
+                className="
+                    relative overflow-hidden rounded-2xl
+                    bg-white/70 backdrop-blur-[2px]
+                    shadow-[0_18px_45px_rgba(0,0,0,0.06)]
+                    border border-white/60
+                    p-6 sm:p-7
+                    min-h-[170px]
+                  "
+                style={{
+                  background:
+                    "radial-gradient(140% 120% at 15% 15%, rgba(16, 185, 129, 0.18) 0%, rgba(16, 185, 129, 0) 75%)," +
+                    "linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.70) 100%)",
+                }}
+              >
+                {/* number */}
+                <div
+                  className={[
+                    "text-[22px] font-semibold tracking-wide",
+                    isFirst ? "text-[#1D2126]" : "text-[#11B89B]",
+                  ].join(" ")}
+                >
+                  {n}
+                </div>
+
+                {/* icon circle (top-right) */}
+                <div
+                  className="
+                    absolute right-5 top-5
+                    w-12 h-12 rounded-full bg-white
+                    shadow-[0_10px_22px_rgba(0,0,0,0.10)]
+                    grid place-items-center
+                  "
+                >
+                  <img src={icon} alt="" aria-hidden className="w-7 h-7 object-contain" />
+                </div>
+
+                {/* content */}
+                <div className="mt-5 pr-14">
+                  <h4 className="font-bold text-[#1D2126] text-[18px] leading-snug">
+                    {title}
+                  </h4>
+                  <p className="mt-2 text-[#6B7280] text-[14px] leading-relaxed line-clamp-3">
+                    {desc}
+                  </p>
+                </div>
               </div>
-            </div>
-          </FadeInSection>
-        ))}
+            </FadeInSection>
+          );
+        })}
       </div>
     </section>
   );

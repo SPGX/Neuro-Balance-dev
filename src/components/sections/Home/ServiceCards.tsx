@@ -166,7 +166,6 @@ export default function OurServices() {
                 className={[
                   "rounded-[32px] overflow-hidden bg-white relative",
                   "shadow-[0_18px_50px_rgba(0,0,0,0.08)]",
-                  "border border-white/60",
                   baseTrans,
                   cardVisible[i] ? baseShow : baseHidden,
                 ].join(" ")}
@@ -190,7 +189,7 @@ export default function OurServices() {
                     <img
                       src={s.image}
                       alt={s.title}
-                      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[74%] h-[54%] object-contain drop-shadow-[0_18px_35px_rgba(0,0,0,0.12)]"
+                      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-auto h-auto object-contain drop-shadow-[0_18px_35px_rgba(0,0,0,0.12)]"
                       loading="lazy"
                     />
                   </div>
@@ -241,7 +240,7 @@ export default function OurServices() {
                 <SwiperSlide key={s.link}>
                   <div
                     className={[
-                      'bg-gradient-to-b from-[#ECFBFA] via-white to-white rounded-[32px] shadow-lg border border-[#D6FAF5]/100 backdrop-blur-[2px] overflow-hidden',
+                      'bg-gradient-to-b from-[#ECFBFA] via-white to-white rounded-[32px] h-[500px] shadow-lg backdrop-blur-[2px] overflow-hidden',
                       baseTrans,
                       mobileCardVisible[i] ? baseShow : baseHidden,
                     ].join(' ')}
@@ -259,12 +258,14 @@ export default function OurServices() {
                         <ChevronRight className="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform" />
                       </Link>
                     </div>
-                    <img
-                      src={s.image}
-                      alt={s.title}
-                      className="w-full h-[200px] object-cover object-center"
-                      loading="lazy"
-                    />
+                    <div className="h-[220px] flex items-center justify-center flex-shrink-0">
+                      <img
+                        src={s.image}
+                        alt={s.title}
+                        className=" object-contain self-start"
+                        loading="lazy"
+                      />
+                    </div>
                   </div>
                 </SwiperSlide>
               ))}

@@ -88,7 +88,7 @@ export default function HeroSection() {
     pill: "/home/hero-pill.png", // ไอคอนยา/แคปซูล
     iconBrain: "/home/icon-brain.svg",
     iconAward: "/home/icon-award.svg",
-    medic: "/home/medic.svg", // รูปคนถือกระเป๋า
+    medic: "/home/medic.png", // รูปคนถือกระเป๋า
     bag: "/home/bag2.png", // รูปกระเป๋า
   };
 
@@ -98,15 +98,37 @@ export default function HeroSection() {
         className="absolute inset-0 -z-20 h-1/2"
       />
 
-      <div className="absolute inset-0 top-0 w-full h-full pointer-events-none select-none -z-10">
+      <div className="absolute inset-x-0 top-0 w-full pointer-events-none select-none -z-10">
+        {/* mobile */}
         <img
-          src="/home/wave-2.svg"
+          src="/home/wave-mobile.png"
           alt=""
-          className="w-full h-full object-cover"
+          className="block sm:hidden w-full h-auto object-cover"
           aria-hidden
           draggable={false}
         />
-        <div className="bg-gradient-to-t from-white via-white/90 to-white/60 bg-[#D7E7F6] h-2/3 w-full" />
+
+        {/* non-mobile */}
+        <div className="hidden sm:block relative w-full overflow-visible h-[800px]">
+          <img
+            src="/home/wave-2.png"
+            alt=""
+            className="w-full h-[90%] block object-cover relative z-0"
+            aria-hidden
+            draggable={false}
+          />
+
+          {/* ✅ ซ้อนเฉพาะด้านล่างรูป */}
+          <div
+            className="absolute left-0 bottom-0 w-full h-[140px] pointer-events-none z-10"
+            style={{
+              background:
+                "linear-gradient(0deg, rgba(255,255,255,1) 90%, rgba(255,255,255,0) 100%)",
+              filter: "blur(20px)",
+            }}
+            aria-hidden
+          />
+        </div>
       </div>
 
       <div className="lg:hidden absolute right-4 top-36 z-20 flex flex-col gap-3">
@@ -128,22 +150,25 @@ export default function HeroSection() {
             </div>
 
             <div
-              className="mt-14 sm:mt-14 md:mt-4 font-bold leading-[0.95] tracking-tight lg:text-[92px] text-[64px] sm:text-[64px] md:text-[78px]"
-              style={{
-                color: "transparent",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                WebkitBackgroundClip: "text",
-                backgroundImage:
-                  "linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.92) 55%, rgba(255,255,255,0.55) 100%)",
-                textShadow: "0 18px 40px rgba(0,140,255,0.12)",
-              }}
+              className="mt-20 sm:mt-14 md:mt-4 font-medium leading-[0.95] tracking-tight lg:text-[92px] text-[64px] sm:text-[64px] md:text-[78px] text-transparent bg-clip-text"
+
             >
-              {titleTop}
+              <img
+                src={"/home/nb.svg"}
+                alt=""
+                className="w-[250px] sm:w-[180px] md:w-[460px]"
+                aria-hidden
+              />
+              {/* {titleTop}
               <br />
-              <div className="mt-6 sm:mt-10 md:mt-0">
+              <div
+                className="mt-6 sm:mt-10 md:mt-0 bg-clip-text"
+                style={{
+                  backgroundImage: "linear-gradient(180deg, #CBF2FF 0%, #FFFFFF 100%)",
+                  textShadow: "0 18px 40px rgba(0,140,255,0.12)",
+                }}>
                 {titleBottom || "Balance"}
-              </div>
+              </div> */}
             </div>
 
             <div className="mt-6 max-w-xl text-slate-700/70 text-[15px] sm:text-[16px] leading-relaxed">

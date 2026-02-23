@@ -140,7 +140,7 @@ export default function SymptomSection() {
                     className="w-full h-full object-cover transition group-hover:scale-105"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-transparent" />
+                  {/* <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-transparent" /> */}
                   <div className="absolute bottom-0 left-0 w-full px-6 py-6">
                     {/* แถบพื้นหลังล่างแบบ blur + gradient */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/30 to-transparent backdrop-blur-[6px]" />

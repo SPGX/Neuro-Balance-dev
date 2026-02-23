@@ -1,34 +1,34 @@
-import { useRef, useEffect, useState } from 'react'
-import { useLanguage } from '../../../i18n/LanguageProvider'
+import { useRef, useEffect, useState } from 'react';
+import { useLanguage } from '../../../i18n/LanguageProvider';
 
 export default function AboutNeuroBalance() {
-  const { lang } = useLanguage()
-  const t = COPY[lang]
+  const { lang } = useLanguage();
+  const t = COPY[lang];
 
-  const leftRef = useRef<HTMLDivElement | null>(null)
-  const rightRef = useRef<HTMLDivElement | null>(null)
-  const [leftVisible, setLeftVisible] = useState(false)
-  const [rightVisible, setRightVisible] = useState(false)
+  const leftRef = useRef<HTMLDivElement | null>(null);
+  const rightRef = useRef<HTMLDivElement | null>(null);
+  const [leftVisible, setLeftVisible] = useState(false);
+  const [rightVisible, setRightVisible] = useState(false);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return
+    if (typeof window === 'undefined') return;
     const obs1 = new window.IntersectionObserver(
       ([entry]) => setLeftVisible(entry.isIntersecting),
       { threshold: 0.12 }
-    )
-    if (leftRef.current) obs1.observe(leftRef.current)
+    );
+    if (leftRef.current) obs1.observe(leftRef.current);
 
     const obs2 = new window.IntersectionObserver(
       ([entry]) => setRightVisible(entry.isIntersecting),
       { threshold: 0.12 }
-    )
-    if (rightRef.current) obs2.observe(rightRef.current)
+    );
+    if (rightRef.current) obs2.observe(rightRef.current);
 
     return () => {
-      obs1.disconnect()
-      obs2.disconnect()
-    }
-  }, [])
+      obs1.disconnect();
+      obs2.disconnect();
+    };
+  }, []);
 
   return (
     <section className="py-12 px-2 sm:px-6 overflow-x-hidden"
@@ -76,12 +76,14 @@ export default function AboutNeuroBalance() {
           className="flex flex-col gap-8 h-full"
         >
           <div className="rounded-[32px] bg-white shadow-[0_12px_60px_0_rgba(64,62,76,0.10)] p-6 sm:p-8 md:p-10 lg:p-12 pb-8 flex-1">
-            <h2 className="about-nb-main-title-medium">
-              Neuro<br />Balance
-            </h2>
             <div className="about-nb-main-subtitle">
               {t.subtitle}
             </div>
+            <img
+              src="/home/nb-yellow.svg"
+              alt=""
+              className="h-auto"
+            />
             <div className="about-nb-main-desc">
               {t.description}
             </div>
@@ -115,16 +117,15 @@ export default function AboutNeuroBalance() {
           }}
           className="relative h-full"
         >
-          <div className="relative w-full h-full rounded-[40px] overflow-hidden shadow-xl flex items-end">
+          <div className="relative w-full h-full rounded-[40px] overflow-hidden shadow-xl">
             <img
-              src="/home/person.svg"
+              src="/home/person.png"
               alt="Neuro Balance"
-              className="w-full h-full object-cover rounded-[40px] max-w-full"
-              style={{ objectPosition: 'top center' }}
+              className="absolute inset-0 w-full h-[1000px] object-cover -top-10 left-0 object-top"
             />
 
             <div className="absolute left-0 right-0 bottom-0 w-full max-w-full lg:max-w-[92%] mx-auto pb-4 sm:pb-7 pointer-events-none">
-              <div className="relative rounded-[28px] bg-[rgba(162,138,112,0.36)] backdrop-blur-[8px] border border-white/40 shadow-[0_8px_40px_0_rgba(162,138,112,0.18)] px-3 py-6 sm:px-4 sm:py-8 flex flex-col pointer-events-auto">
+              {/* <div className="relative rounded-[28px] bg-[rgba(162,138,112,0.36)] backdrop-blur-[8px] border border-white/40 shadow-[0_8px_40px_0_rgba(162,138,112,0.18)] px-3 py-6 sm:px-4 sm:py-8 flex flex-col pointer-events-auto">
                 <img
                   src="/home/Arrow.svg"
                   alt=""
@@ -147,13 +148,13 @@ export default function AboutNeuroBalance() {
                     <div className="about-nb-ex-type">{t.experience.cases}</div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 const COPY = {
@@ -197,4 +198,4 @@ const COPY = {
       cases: 'cases treated',
     },
   },
-} as const
+} as const;
