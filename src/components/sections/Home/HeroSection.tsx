@@ -89,7 +89,7 @@ export default function HeroSection() {
     iconBrain: "/home/icon-brain.svg",
     iconAward: "/home/icon-award.svg",
     medic: "/home/medic.svg", // รูปคนถือกระเป๋า
-    bag: "/home/bag.svg", // รูปกระเป๋า
+    bag: "/home/bag2.png", // รูปกระเป๋า
   };
 
   return (
@@ -106,13 +106,14 @@ export default function HeroSection() {
           aria-hidden
           draggable={false}
         />
+        <div className="bg-gradient-to-t from-white via-white/90 to-white/60 bg-[#D7E7F6] h-2/3 w-full" />
       </div>
 
-      <div className="lg:hidden absolute right-4 top-16 z-20 flex flex-col gap-3">
+      <div className="lg:hidden absolute right-4 top-36 z-20 flex flex-col gap-3">
         <StatCard iconSrc={ASSET.iconBrain} title="5,654 Cases" subtitle={lang === "th" ? "เกี่ยวกับสมอง" : "Brain-related"} />
         <StatCard iconSrc={ASSET.iconAward} title="10 Years" subtitle={lang === "th" ? "ฟื้นฟูสุขภาพแบบองค์รวม" : "Holistic wellness"} />
         <img
-          src={ASSET.pill}
+          src={ASSET.medic}
           alt=""
           className="ml-auto mt-1 h-10 w-10 object-contain drop-shadow"
           aria-hidden
@@ -121,13 +122,13 @@ export default function HeroSection() {
 
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-28 pb-12 lg:pb-16">
         <div className="grid items-center gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-6 text-left">
-            <div className="text-slate-700/80 font-semibold text-[15px] sm:text-[16px]">
+          <div className="lg:col-span-6 text-left mt-10 sm:mt-10 md:mt-0">
+            <div className="text-slate-700/80 font-semibold text-[14px] sm:text-[14px] md:text-[16px]">
               {t.h1}
             </div>
 
             <div
-              className="mt-4 font-bold leading-[0.95] tracking-tight text-[64px] sm:text-[78px] lg:text-[92px]"
+              className="mt-14 sm:mt-14 md:mt-4 font-bold leading-[0.95] tracking-tight lg:text-[92px] text-[64px] sm:text-[64px] md:text-[78px]"
               style={{
                 color: "transparent",
                 WebkitTextFillColor: "transparent",
@@ -140,7 +141,9 @@ export default function HeroSection() {
             >
               {titleTop}
               <br />
-              {titleBottom || "Balance"}
+              <div className="mt-6 sm:mt-10 md:mt-0">
+                {titleBottom || "Balance"}
+              </div>
             </div>
 
             <div className="mt-6 max-w-xl text-slate-700/70 text-[15px] sm:text-[16px] leading-relaxed">
@@ -171,26 +174,6 @@ export default function HeroSection() {
               >
                 {t.cta1}
               </Link>
-
-              {/* <Link
-                to="/contact-us"
-                aria-label={t.cta2}
-                className="inline-flex items-center justify-center font-semibold text-[#207DFA] text-base sm:text-lg rounded-full shadow-sm border border-gray-300 bg-white"
-                style={{
-                  width: 190,
-                  height: 52,
-                  padding: "10px 44px",
-                  borderRadius: "100px",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "#EDF5FF";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "#fff";
-                }}
-              >
-                {t.cta2}
-              </Link> */}
             </div>
           </div>
 
@@ -218,9 +201,9 @@ export default function HeroSection() {
 
               <div className="absolute left-2 bottom-11 w-[86px] h-[86px] grid place-items-center">
                 <img
-                  src={ASSET.bag}
+                  src={"/home/bag.png"}
                   alt=""
-                  className="h-24 w-24 object-contain drop-shadow"
+                  className="h-20 w-20 object-contain drop-shadow"
                   aria-hidden
                 />
               </div>
@@ -233,7 +216,7 @@ export default function HeroSection() {
           <div className="relative w-[78%] max-w-3xl mx-auto overflow-hidden py-1 sm:py-2">
             <div className="pointer-events-none absolute left-0 top-0 h-full w-8 sm:w-12 bg-gradient-to-r from-white/30 via-white/70 to-transparent z-10" />
             <div className="pointer-events-none absolute right-0 top-0 h-full w-8 sm:w-12 bg-gradient-to-l from-white/30 via-white/70 to-transparent z-10" />
-            <div className="flex items-center gap-5 sm:gap-7 whitespace-nowrap animate-partner-marquee">
+            <div className="flex items-center gap-5 sm:gap-7 whitespace-nowrap animate-partner-marquee bg-transparent">
               {[...partnerLogos, ...partnerLogos].map((logo, idx) => (
                 <img
                   key={idx}
