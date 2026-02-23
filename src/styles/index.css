@@ -574,7 +574,7 @@
     font-family: 'Noto Sans Thai', sans-serif;
     font-weight: 600;
     font-style: normal;
-    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-size: clamp(1rem, 2vw, 1.2rem);
     /* 24px */
     line-height: 2rem;
     color: #0FC1A1;
@@ -582,9 +582,9 @@
 
   .text-heading {
     font-family: 'Noto Sans Thai', sans-serif;
-    font-weight: 500;
+    font-weight: 400;
     font-style: normal;
-    font-size: clamp(2.5rem, 4vw, 3rem);
+    font-size: clamp(2.5rem, 3vw, 3rem);
     /* 48px */
     line-height: clamp(3rem, 4.25vw, 4.25rem) !important;
     white-space: pre-line;

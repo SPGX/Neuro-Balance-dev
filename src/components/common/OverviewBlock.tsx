@@ -13,7 +13,7 @@ export default function OverviewBlock({ description, image }: OverviewBlockProps
                     <img
                         src={image}
                         alt="Overview"
-                        className="max-w-full md:max-w-[500px] h-auto"
+                        className="max-w-full md:max-w-[300px] h-auto"
                     />
                 </div>
             )}

@@ -11,6 +11,7 @@ import 'swiper/css/pagination'
 import { Pagination } from 'swiper/modules'
 import LoadingScreen from '../components/common/LoadingScreen'
 import { useLanguage } from '../i18n/LanguageProvider'
+import NeuroFeedbackSection from '../components/sections/Home/NeuroFeedbackSection';
 
 export default function AboutPage() {
   const { lang } = useLanguage()
@@ -76,7 +77,9 @@ export default function AboutPage() {
         />
       </section>
 
-      <section className="bg-gray-100 py-20">
+      <NeuroFeedbackSection />
+
+      {/* <section className="bg-gray-100 py-20">
         <div className="max-w-[1440px] mx-auto px-6">
           <h5 className="text-title-20-teal mb-2">{aboutData.promoTitleTh}</h5>
           <h2 className="text-title-64-black mb-10">{aboutData.promoTitleEng}</h2>
@@ -122,7 +125,7 @@ export default function AboutPage() {
             <div className="nb-card-pagination flex justify-center mt-6" />
           </div>
         </div>
-      </section >
+      </section > */}
     </div>
   )
 }

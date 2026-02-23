@@ -5,6 +5,7 @@ import LoadingScreen from '../components/common/LoadingScreen';
 import { BannerInfoData, fetchCoursesPageData, type TrainingCourse } from '../lib/coursesapi';
 import ContentBlock from '../components/common/ContentBlock';
 import Breadcrumb from '../components/common/Breadcrumb';
+import BannerBlock from '../components/common/BannerBlock';
 
 export default function CoursesPage() {
     const [trainingCourses, setTrainingCourses] = useState<TrainingCourse[]>([]);
@@ -46,6 +47,13 @@ export default function CoursesPage() {
                     hideBgTitle
                     positionTitle="right"
                 />
+                {/* <BannerBlock
+                    img="/images/course-bg.svg"
+                    title="คอร์สเทรนนิ่ง"
+                    des="Neuro"
+                    rightTitle="สมองที่มีความสมดุล"
+                    rightDesc="นั้นก่อให้เกิดประโยชน์มากมาย โดยรวมคือการทำให้มีสุขภาพที่ดี การดูแลสุขภาพรักษากายและใจให้พร้อมสำหรับการดำเนินชีวิตใหม่ๆในแต่ละวัน ซึ่งไม่ได้ถือว่าเป็นเรื่องยาก หากแต่รู้จักการจัดระบบสมองให้มีความสมดุล"
+                /> */}
             </div>
 
             <div className="px-6 sm:px-11 mt-8">

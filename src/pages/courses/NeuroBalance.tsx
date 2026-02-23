@@ -12,6 +12,7 @@ import NeurofeedbackActivitiesSection from '../../components/common/Neurofeedbac
 import BrainMappingSection from '../../components/common/BrainMappingSection';
 
 import LoadingScreen from '../../components/common/LoadingScreen';
+import BannerBlock from '../../components/common/BannerBlock';
 
 const BASE_URL = import.meta.env.VITE_API_URL.replace('/api', '');
 
@@ -102,13 +103,20 @@ export default function NeuroBalancePage() {
     return (
         <>
             <section className="max-w-[1440px] mx-auto py-20 mt-6 sm:mt-4">
-                <div className="px-6 sm:px-11">
-                    <ContentBlock
+                <div className="px-6">
+                    {/* <ContentBlock
                         variant="hero"
                         title="Neuro Balance"
                         bgImage={data?.bannerImage}
                         label="คอร์สเทรนนิ่ง"
                         size="lg"
+                    /> */}
+                    <BannerBlock
+                        img="/images/course-bg.svg"
+                        title="คอร์สเทรนนิ่ง"
+                        des="Neuro"
+                        rightTitle="สมองที่มีความสมดุล"
+                        rightDesc="นั้นก่อให้เกิดประโยชน์มากมาย โดยรวมคือการทำให้มีสุขภาพที่ดี การดูแลสุขภาพรักษากายและใจให้พร้อมสำหรับการดำเนินชีวิตใหม่ๆในแต่ละวัน ซึ่งไม่ได้ถือว่าเป็นเรื่องยาก หากแต่รู้จักการจัดระบบสมองให้มีความสมดุล"
                     />
                 </div>
                 <div className="absolute bottom-[-900px] left-[-100px] w-[400px] h-[400px] bg-[radial-gradient(circle_at_center,_#0FC1A11A,_transparent)] opacity-100 blur-3xl hidden md:block"></div>

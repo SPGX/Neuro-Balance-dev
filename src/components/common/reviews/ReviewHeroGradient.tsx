@@ -8,7 +8,7 @@ export default function ReviewHeroGradient({ className = '' }: Props) {
             <picture className="absolute inset-0">
                 <source media="(max-width: 767px)" srcSet="/images/review-mobile.svg" />
                 <img
-                    src="/images/review.svg"
+                    src="/images/reviews.png"
                     alt=""
                     className="w-full h-full object-cover md:object-center object-[center_30%]"
                     aria-hidden

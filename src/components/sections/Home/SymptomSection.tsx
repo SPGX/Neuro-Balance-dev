@@ -4,9 +4,9 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import { useLanguage } from "../../../i18n/LanguageProvider";
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, ArrowRight } from 'lucide-react';
 
-type Symptom = { title: string; desc: string; img: string };
+type Symptom = { title: string; desc: string; img: string; };
 
 const COPY: Record<
   "th" | "en",
@@ -14,7 +14,7 @@ const COPY: Record<
     eyebrow: string;
     heading: string;
     sub: string;
-    tabs: { child: string; adult: string };
+    tabs: { child: string; adult: string; };
     child: Symptom[];
     adult: Symptom[];
   }
@@ -80,8 +80,8 @@ export default function SymptomSection() {
           </h2>
 
           <p className="text-gray-500 mb-6">{T.sub}</p>
-          
-          <div className="border border-[#0000001A] mb-7"/>
+
+          <div className="border border-[#0000001A] mb-7" />
 
           <div className="flex flex-col gap-2" role="tablist" aria-label="symptom group">
             <button
@@ -141,11 +141,36 @@ export default function SymptomSection() {
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-transparent" />
-                  <div className="absolute top-0 left-0 w-full p-5">
-                    <h3 className="text-title-swiper mb-2">
-                      {item.title}
-                    </h3>
-                    <div className="text-description-swiper">{item.desc}</div>
+                  <div className="absolute bottom-0 left-0 w-full px-6 py-6">
+                    {/* แถบพื้นหลังล่างแบบ blur + gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/30 to-transparent backdrop-blur-[6px]" />
+
+                    <div className="relative z-10 flex items-end justify-between gap-4">
+                      <div className="min-w-0">
+                        <h3 className="text-white font-extrabold text-[28px] leading-tight truncate">
+                          {item.title}
+                        </h3>
+
+                        {/* ถ้าต้องการ desc ใต้หัวข้อ (ถ้าไม่อยากมี ให้ลบ div นี้ทิ้งได้เลย) */}
+                        <div className="text-white/85 text-sm mt-1 line-clamp-2">
+                          {item.desc}
+                        </div>
+                      </div>
+
+                      {/* ปุ่มวงกลมลูกศร */}
+                      <div className="shrink-0 absolute right-0 bottom-12 ">
+                        <div
+                          className={[
+                            "w-14 h-14 rounded-full bg-white/95 grid place-items-center",
+                            "shadow-[0_12px_24px_rgba(0,0,0,0.16)]",
+                            "transition-transform duration-300",
+                            "group-hover:scale-[1.05]",
+                          ].join(" ")}
+                        >
+                          <ArrowRight className="w-6 h-6 text-[#2CC9A6] transition-transform duration-300 group-hover:translate-x-0.5" />
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </SwiperSlide>
