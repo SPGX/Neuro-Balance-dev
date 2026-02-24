@@ -76,7 +76,7 @@ export default function AboutNeuroBalance() {
           className="flex flex-col gap-8 h-full"
         >
           <div className="rounded-[32px] bg-white shadow-[0_12px_60px_0_rgba(64,62,76,0.10)] p-6 sm:p-8 md:p-10 lg:p-12 pb-8 flex-1">
-            <div className="about-nb-main-subtitle">
+            <div className="about-nb-main-subtitle text-[20px]">
               {t.subtitle}
             </div>
             <img
@@ -121,7 +121,7 @@ export default function AboutNeuroBalance() {
             <img
               src="/home/person.png"
               alt="Neuro Balance"
-              className="absolute inset-0 w-full h-[1000px] object-cover -top-10 left-0 object-top"
+              className="absolute inset-0 w-full h-[110%] object-cover -top-10 left-0 object-top"
             />
 
             <div className="absolute left-0 right-0 bottom-0 w-full max-w-full lg:max-w-[92%] mx-auto pb-4 sm:pb-7 pointer-events-none">

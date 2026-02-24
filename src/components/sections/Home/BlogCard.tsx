@@ -19,7 +19,7 @@ export default function BlogCard({ image, tag, title, date, views, href }) {
                 <div className="flex items-center justify-between mt-auto flex-row">
                     <div className="text-gray-400 text-xs flex items-center gap-2">
                         <span>{date}</span>
-                        <span className="flex items-center gap-1">
+                        {/* <span className="flex items-center gap-1">
                             <img
                                 src="/icons/visibility.svg"
                                 alt="จำนวนผู้อ่าน"
@@ -27,7 +27,7 @@ export default function BlogCard({ image, tag, title, date, views, href }) {
                                 style={{ display: "inline-block" }}
                             />
                             {views.toLocaleString()}
-                        </span>
+                        </span> */}
                     </div>
 
                 </div>

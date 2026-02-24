@@ -42,20 +42,23 @@ export default function NeuroFeedbackSection() {
 
   return (
     <section className="py-12 px-10 sm:py-16 sm:px-6 md:px-10">
-      <div className="max-w-2xl mx-auto text-center mb-8 sm:mb-12">
-        <p className="text-teal-500 font-medium text-sm sm:text-base md:text-lg mb-1">{t.eyebrow}</p>
-        <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">
-          {t.heading}
-        </h1>
-        <p className="text-gray-600 text-sm sm:text-base">
+      <div className="sm:max-w-5xl lg:max-w-6xl mx-auto self-center text-center mb-8 sm:mb-12 flex flex-row items-center justify-between flex-wrap">
+        <div className="flex flex-col items-start">
+          <p className="text-teal-500 font-medium text-sm sm:text-base md:text-lg mb-1">{t.eyebrow}</p>
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">
+            {t.heading}
+          </h1>
+        </div>
+        <p className="text-gray-600 text-sm sm:text-base max-w-full sm:max-w-full md:max-w-60 text-left">
           {t.sub}
         </p>
       </div>
 
       <div
         className="
-          flex flex-col gap-10 max-w-full
-          sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-10
+          grid grid-cols-2 gap-4 max-w-full
+          sm:grid-cols-2 sm:gap-10
+          lg:grid-cols-3
           sm:max-w-5xl lg:max-w-6xl mx-auto
         "
       >
@@ -69,22 +72,19 @@ export default function NeuroFeedbackSection() {
                 className="
                     relative overflow-hidden rounded-2xl
                     bg-white/70 backdrop-blur-[2px]
-                    shadow-[0_18px_45px_rgba(0,0,0,0.06)]
-                    border border-white/60
                     p-6 sm:p-7
-                    min-h-[170px]
+                    min-h-full
                   "
                 style={{
                   background:
-                    "radial-gradient(140% 120% at 15% 15%, rgba(16, 185, 129, 0.18) 0%, rgba(16, 185, 129, 0) 75%)," +
+                    "radial-gradient(140% 120% at 65% 35%, rgba(16, 185, 129, 0.18) 0%, rgba(16, 185, 129, 0) 75%)," +
                     "linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.70) 100%)",
                 }}
               >
                 {/* number */}
                 <div
                   className={[
-                    "text-[22px] font-semibold tracking-wide",
-                    isFirst ? "text-[#1D2126]" : "text-[#11B89B]",
+                    "text-[22px] font-semibold tracking-wide text-[#11B89B]",
                   ].join(" ")}
                 >
                   {n}
@@ -94,20 +94,20 @@ export default function NeuroFeedbackSection() {
                 <div
                   className="
                     absolute right-5 top-5
-                    w-12 h-12 rounded-full bg-white
+                    w-14 h-14 rounded-full bg-white
                     shadow-[0_10px_22px_rgba(0,0,0,0.10)]
                     grid place-items-center
                   "
                 >
-                  <img src={icon} alt="" aria-hidden className="w-7 h-7 object-contain" />
+                  <img src={icon} alt="" aria-hidden className="w-9 h-9 object-contain" />
                 </div>
 
                 {/* content */}
-                <div className="mt-5 pr-14">
-                  <h4 className="font-bold text-[#1D2126] text-[18px] leading-snug">
+                <div className="mt-8 sm:mt-8 md:mt-5 pr-2">
+                  <h4 className="font-bold text-[#1D2126] text-[16px] sm:text-[16px] md:text-[20px] leading-snug line-clamp-3">
                     {title}
                   </h4>
-                  <p className="mt-2 text-[#6B7280] text-[14px] leading-relaxed line-clamp-3">
+                  <p className="hidden sm:block mt-2 text-[#6B7280] text-[18px] leading-relaxed line-clamp-2">
                     {desc}
                   </p>
                 </div>

@@ -113,7 +113,7 @@ export default function SymptomGrid({ articles }: Props) {
             <h2
                 ref={headingRef}
                 className="
-                        text-center text-32 sm:text-48 md:text-64 font-medium
+                        text-center text-32 sm:text-48 md:text-64 font-medium pt-12
                         bg-gradient-to-r from-[#1D2126] to-[#587973]
                         bg-clip-text text-transparent
                     "
@@ -152,7 +152,8 @@ export default function SymptomGrid({ articles }: Props) {
                                 </Link>
 
                                 <div className="flex items-center justify-between mt-2">
-                                    <p className="text-sm text-gray-500">👁 {viewed.toLocaleString()}</p>
+                                    {/* <p className="text-sm text-gray-500">👁 {viewed.toLocaleString()}</p> */}
+                                    <div />
                                     <button
                                         type="button"
                                         onClick={() => navigate(to)}

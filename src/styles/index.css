@@ -407,7 +407,7 @@
 
   /* ========== ADDRESS BOX LEFT ========== */
   .about-nb-address-title {
-    @apply font-noto font-extrabold leading-tight;
+    @apply font-noto font-bold leading-tight;
     color: #1D2126;
     font-size: clamp(16px, 3vw, 24px);
     margin-bottom: 0.5rem;

@@ -7,7 +7,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-gradient-to-t from-white to-[#e0f2fe]">
+    <footer className="bg-gradient-to-t from-white from-0% via-white via-80% to-[#E7F8F5] to-100%">
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-12 py-10">
         {/* 2 columns */}
         <div className="grid gap-10 lg:grid-cols-[320px_1fr]">

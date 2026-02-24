@@ -19,7 +19,7 @@ export default function Breadcrumb({ path, isBanner = false }: BreadcrumbProps) 
                 <span key={i} className='flex flex-row items-center ml-4'>
                     {i > 0 && <span className={`${isBanner ? "text-white" : "text-black-70"} `}><FaAngleRight /></span>} 
                     {i < path.length - 1 ? (
-                        <Link to={getHref(segment)} className={`hover:underline ${isBanner ? "text-white" : "text-white"} pr-1 `}>
+                        <Link to={getHref(segment)} className={`hover:underline ${isBanner ? "text-white/70" : "text-white"} pr-1 `}>
                             {segment}
                         </Link>
                     ) : (

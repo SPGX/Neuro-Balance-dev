@@ -58,14 +58,14 @@ export default function ArticleHeaderMetaAccordion({
                             <CalendarDays size={16} />
                             <span>{formattedDate}</span>
                         </div>
-                        <div className="flex items-center gap-2">
+                        {/* <div className="flex items-center gap-2">
                             <Eye size={16} />
                             <span>{viewCount.toLocaleString()} เข้าชม</span>
-                        </div>
+                        </div> */}
                     </div>
 
                     {/* Social Links */}
-                    <div className="flex items-center gap-3 flex-wrap justify-end">
+                    {/* <div className="flex items-center gap-3 flex-wrap justify-end">
                         <div className="flex items-center gap-3 justify-end">
                             <a className="font-medium text-black flex flex-row items-center gap-1 cursor-pointer"><img src="/icons/favorite.svg" alt="Favorite" className="w-6 h-6" />ชอบ {likeCount}</a>
                             <a className="font-medium text-black flex flex-row items-center gap-1 cursor-default"><img src="/icons/share.svg" alt="Share" className="w-6 h-6" />แบ่งปัน</a>
@@ -92,7 +92,7 @@ export default function ArticleHeaderMetaAccordion({
                                 </a>
                             )}
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             {/* )} */}
         </div>

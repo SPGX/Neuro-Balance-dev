@@ -239,8 +239,8 @@ export default function HeroSection() {
         <div className="mt-12 sm:mt-14 flex flex-col items-center w-full">
           <div className="text-slate-700/70 font-semibold mb-4">{t.partners}</div>
           <div className="relative w-[78%] max-w-3xl mx-auto overflow-hidden py-1 sm:py-2">
-            <div className="pointer-events-none absolute left-0 top-0 h-full w-8 sm:w-12 bg-gradient-to-r from-white/30 via-white/70 to-transparent z-10" />
-            <div className="pointer-events-none absolute right-0 top-0 h-full w-8 sm:w-12 bg-gradient-to-l from-white/30 via-white/70 to-transparent z-10" />
+            <div className="pointer-events-none absolute left-0 top-0 h-full w-28 sm:w-24 bg-gradient-to-r from-white via-white/70 to-transparent z-10" />
+            <div className="pointer-events-none absolute right-0 top-0 h-full w-28 sm:w-24 bg-gradient-to-l from-white via-white/70 to-transparent z-10" />
             <div className="flex items-center gap-5 sm:gap-7 whitespace-nowrap animate-partner-marquee bg-transparent">
               {[...partnerLogos, ...partnerLogos].map((logo, idx) => (
                 <img

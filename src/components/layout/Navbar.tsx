@@ -1,124 +1,89 @@
-import React, { useState, useEffect } from 'react'
-import { Link, NavLink } from 'react-router-dom'
-import classNames from 'classnames'
-import { menus } from './menus'
-import { useLanguage } from '../../i18n/LanguageProvider'
+import React, { useState, useEffect } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import classNames from 'classnames';
+import { menus } from './menus';
+import { useLanguage } from '../../i18n/LanguageProvider';
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false)
-  const { lang, setLang, toggle } = useLanguage()
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const { lang, toggle } = useLanguage();
 
+  // lock body scroll when drawer open
   useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
-  }, [open])
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [open]);
 
-  const isTH = lang === 'th'
-  const flagSrc = isTH ? '/thai.png' : 'eng.png'
-  const label = isTH ? 'ไทย' : 'English'
+  // detect scroll
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll(); // init
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const isTH = lang === 'th';
+  const flagSrc = isTH ? '/thai.png' : '/eng.png';
+  const label = isTH ? 'ไทย' : 'English';
+
+  // ✅ solid background when scrolled OR menu open
+  const solid = scrolled || open;
 
   return (
     <header className="fixed top-0 left-0 w-full z-50">
-      {/* <div
-        className="w-full bg-[#3B786D80] backdrop-blur-[50px] flex items-center justify-between px-6 md:px-8 py-2"
-        style={{ backgroundColor: '#3B786D80', backdropFilter: 'blur(50px)', WebkitBackdropFilter: 'blur(50px)' }}
+      {/* MOBILE TOP BAR */}
+      <div
+        className={classNames(
+          "w-full md:hidden transition-all duration-300",
+          solid
+            ? "bg-white/90 backdrop-blur-md shadow-sm"
+            : "bg-transparent shadow-none"
+        )}
       >
-        <div className="flex items-center gap-3">
-          <Link to="/" className="flex items-center gap-3">
-            <img
-              src="/favicon.svg"
-              alt="Logo"
-              className="w-8 h-8 mr-2 shadow rounded-full"
-            />
-            <span className="nav-text">Neuro Balance</span>
-          </Link>
-        </div>
-
-        <div className="hidden md:flex items-center gap-2">
-          <div
-            className="flex items-center rounded-full p-1 shadow"
-            style={{ backgroundColor: '#345F57' }}
-          >
-            <button
-              type="button"
-              onClick={() => setLang('th')}
-              className={classNames(
-                'px-2.5 py-1 text-sm rounded-full transition',
-                lang === 'th' ? 'bg-white text-black' : 'hover:bg-white/10 text-white'
-              )}
-              aria-pressed={lang === 'th'}
-            >
-              TH
-            </button>
-            <button
-              type="button"
-              onClick={() => setLang('en')}
-              className={classNames(
-                'px-2.5 py-1 text-sm rounded-full transition',
-                lang === 'en' ? 'bg-white text-black' : 'hover:bg-white/10 text-white'
-              )}
-              aria-pressed={lang === 'en'}
-            >
-              EN
-            </button>
-          </div>
-        </div>
-
-        <button
-          type="button"
-          className="flex md:hidden items-center justify-center w-8 h-8"
-          onClick={() => setOpen(v => !v)}
-          aria-label="เปิดเมนู"
-        >
-          <div className="relative w-8 h-6 flex flex-col justify-between">
-            <span className={classNames("block h-1 bg-white rounded transition-all duration-200", open && "rotate-45 translate-y-2.5")}></span>
-            <span className={classNames("block h-1 bg-white rounded transition-all duration-200", open && "opacity-0")}></span>
-            <span className={classNames("block h-1 bg-white rounded transition-all duration-200", open && "-rotate-45 -translate-y-2.5")}></span>
-          </div>
-        </button>
-      </div> */}
-
-      {/* mobile top bar */}
-      <div className="w-full bg-white/90 backdrop-blur-md shadow-sm md:hidden">
-        <div className="py-2 h-[64px] flex items-center">
+        <div className="py-2 h-[64px] flex items-center px-4">
           <Link to="/" className="flex items-center">
-            <img src="/neuro_logo.svg" alt="Logo" className="h-auto" />
+            <img src="/neuro_logo.svg" alt="Logo" className="h-[25px]" />
           </Link>
 
           <div className="ml-auto flex items-center gap-3">
             <button
               type="button"
               onClick={toggle}
-              className="inline-flex items-center justify-center bg-white shadow px-1 py-1 rounded-full"
+              className="inline-flex items-center justify-center px-1 py-1 rounded-full"
               aria-label="สลับภาษา"
             >
-              <img src={flagSrc} alt={isTH ? 'TH' : 'EN'} className="w-8 h-8 rounded-full" />
+              <img src={flagSrc} alt={isTH ? 'TH' : 'EN'} className="w-6 h-6 rounded-full" />
             </button>
 
             <button
               type="button"
-              className="flex items-center justify-center w-10 h-10"
+              className="flex items-center justify-center w-6 h-6"
               onClick={() => setOpen(v => !v)}
               aria-label="เปิดเมนู"
             >
               <div className="relative w-7 h-5 flex flex-col justify-between">
-                <span className={classNames("block h-1 bg-gray-800 rounded transition-all duration-200", open && "rotate-45 translate-y-2")}></span>
-                <span className={classNames("block h-1 bg-gray-800 rounded transition-all duration-200", open && "opacity-0")}></span>
-                <span className={classNames("block h-1 bg-gray-800 rounded transition-all duration-200", open && "-rotate-45 -translate-y-2")}></span>
+                <span className={classNames("block h-1 bg-gray-800 rounded transition-all duration-200", open && "rotate-45 translate-y-2")} />
+                <span className={classNames("block h-1 bg-gray-800 rounded transition-all duration-200", open && "opacity-0")} />
+                <span className={classNames("block h-1 bg-gray-800 rounded transition-all duration-200", open && "-rotate-45 -translate-y-2")} />
               </div>
             </button>
           </div>
         </div>
       </div>
 
-      <nav className="w-full bg-white/0 hidden md:block">
+      {/* DESKTOP NAV */}
+      <nav
+        className={classNames(
+          "w-full hidden md:block transition-all duration-300",
+          solid
+            ? "bg-white/90 backdrop-blur-md shadow-sm"
+            : "bg-transparent shadow-none"
+        )}
+      >
         <div className="max-w-7xl mx-auto px-6 py-0 h-[56px] grid grid-cols-[auto_1fr_auto] items-center">
           <Link to="/" className="flex items-center justify-self-start">
-            <img
-              src="/neuro_logo.svg"
-              alt="Logo"
-              className="h-8 w-auto"
-            />
+            <img src="/neuro_logo.svg" alt="Logo" className="h-8 w-auto" />
           </Link>
 
           <div className="justify-self-center">
@@ -130,8 +95,7 @@ export default function Navbar() {
                   className={({ isActive }) =>
                     [
                       'cursor-pointer transition-colors',
-                      isActive ? 'border-b-2 border-teal-600' : '',
-                      isActive ? 'text-teal-600' : 'hover:text-teal-600'
+                      isActive ? 'border-b-2 border-teal-600 text-teal-600' : 'hover:text-teal-600'
                     ].join(' ')
                   }
                 >
@@ -155,6 +119,7 @@ export default function Navbar() {
         </div>
       </nav>
 
+      {/* overlay */}
       {open && (
         <div
           className="fixed top-0 left-0 w-full h-full bg-black/30 z-[48] md:hidden"
@@ -162,6 +127,7 @@ export default function Navbar() {
         />
       )}
 
+      {/* mobile drawer */}
       <div
         className={classNames(
           "fixed top-[64px] right-0 w-72 h-[calc(100vh-64px)] bg-white/90 backdrop-blur-md z-[50] p-6 shadow-lg transition-transform duration-300 ease-in-out md:hidden",
@@ -196,5 +162,5 @@ export default function Navbar() {
         </div>
       </div>
     </header>
-  )
+  );
 }

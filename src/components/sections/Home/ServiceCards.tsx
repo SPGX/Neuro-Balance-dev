@@ -16,8 +16,8 @@ const TH = {
   desc: 'เรามีบริการสำหรับลูกค้าทุกช่วงอายุเพื่อช่วยส่งเสริมสุขภาพสมองและสุขภาพร่างกายตามมาตรฐานที่ได้รับการยอมรับ พร้อมผู้เชี่ยวชาญคอยให้คำแนะนำตลอดการเข้ารับบริการ',
   linkLabel: 'รายละเอียด',
   list: [
-    { title: 'ให้คำปรึกษา', desc: 'ปรึกษาฟรีทุกอาการทางสมอง', link: '/contact-us', image: '/home/message.svg' },
-    { title: 'เทรนนิ่ง', desc: 'กิจกรรมปรับสมดุลสมอง', link: '/courses', image: '/home/aura.svg' },
+    { title: 'ให้คำปรึกษา', desc: 'ปรึกษาฟรีทุกอาการทางสมอง', link: '/contact-us', image: '/home/Dialog.png' },
+    { title: 'เทรนนิ่ง', desc: 'กิจกรรมปรับสมดุลสมอง', link: '/courses', image: '/home/aura.png' },
   ],
 };
 
@@ -27,8 +27,8 @@ const EN = {
   desc: 'Offering services for every age group, we enhance brain and body health with globally recognized standards and research-backed methods. Our specialists provide expert guidance and tailored care throughout your wellness experience.',
   linkLabel: 'Detail',
   list: [
-    { title: 'Consultation', desc: 'Get a Free Expert Consultation', link: '/contact-us', image: '/home/message.svg' },
-    { title: 'Training', desc: 'Unlock Your Potential with Brain-Balancing Activities', link: '/courses', image: '/home/aura.svg' },
+    { title: 'Consultation', desc: 'Get a Free Expert Consultation', link: '/contact-us', image: '/home/Dialog.png' },
+    { title: 'Training', desc: 'Unlock Your Potential with Brain-Balancing Activities', link: '/courses', image: '/home/aura.png' },
   ],
 };
 
@@ -189,7 +189,7 @@ export default function OurServices() {
                     <img
                       src={s.image}
                       alt={s.title}
-                      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-auto h-auto object-contain drop-shadow-[0_18px_35px_rgba(0,0,0,0.12)]"
+                      className="absolute left-1/2 top-1/2 max-h-[230px] -translate-x-1/2 -translate-y-1/2 w-auto h-auto object-contain drop-shadow-[0_18px_35px_rgba(0,0,0,0.12)]"
                       loading="lazy"
                     />
                   </div>
@@ -200,7 +200,7 @@ export default function OurServices() {
                         <div className="text-white font-medium text-[28px] leading-tight truncate">
                           {s.title}
                         </div>
-                        <div className="text-white/90 text-sm mt-1 line-clamp-2">
+                        <div className="text-white/90 text-xl mt-1 line-clamp-2">
                           {s.desc}
                         </div>
                       </div>

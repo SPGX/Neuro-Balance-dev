@@ -72,12 +72,12 @@ export default function FAQSection() {
                             <div
                                 key={i}
                                 className={`
-                  border rounded-2xl overflow-hidden transition-all duration-300 ease-out
-                  ${isOpen
+                                    border rounded-2xl overflow-hidden transition-all duration-300 ease-out
+                                    ${isOpen
                                         ? "border-2 border-tealPrimary bg-white row-span-2"
                                         : "border-gray-200 bg-white hover:border-gray-300"
                                     }
-                `}
+                                `}
                             >
                                 {/* Question Button */}
                                 <button
@@ -85,32 +85,32 @@ export default function FAQSection() {
                                     aria-expanded={isOpen}
                                     onClick={() => setOpenIndex(isOpen ? null : i)}
                                     className={`
-    w-full flex items-center justify-between text-left px-6 py-5
-    focus:outline-none group transition-colors duration-200
-    ${isOpen ? "bg-emerald-50/40" : "hover:bg-emerald-50/30"}
-  `}
+                                            w-full flex items-center justify-between text-left px-6 py-5
+                                            focus:outline-none group transition-colors duration-200
+                                            ${isOpen ? "bg-emerald-50/40" : "hover:bg-emerald-50/30"}
+                                        `}
                                 >
                                     <span
                                         className={`
-      font-semibold text-lg leading-relaxed pr-4 transition-colors duration-200
-      ${isOpen ? "text-gray-900" : "text-gray-800 group-hover:text-gray-900"}
-    `}
+                                        font-semibold text-lg leading-relaxed pr-4 transition-colors duration-200
+                                        ${isOpen ? "text-gray-900" : "text-gray-800 group-hover:text-gray-900"}
+                                        `}
                                     >
                                         {item.q}
                                     </span>
 
                                     <div
                                         className={`
-      flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center
-      transition-all duration-200
-      ${isOpen ? "bg-emerald-100 rotate-180" : "bg-gray-50 group-hover:bg-emerald-100"}
-    `}
+                                        flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center
+                                        transition-all duration-200
+                                        ${isOpen ? "bg-emerald-100 rotate-180" : "bg-gray-50 group-hover:bg-emerald-100"}
+                                        `}
                                     >
                                         <svg
                                             className={`
-        w-4 h-4 transition-colors duration-200
-        ${isOpen ? "text-tealPrimary" : "text-gray-500 group-hover:text-tealPrimary"}
-      `}
+                                                w-4 h-4 transition-colors duration-200
+                                                ${isOpen ? "text-tealPrimary" : "text-gray-500 group-hover:text-tealPrimary"}
+                                            `}
                                             fill="none"
                                             stroke="currentColor"
                                             viewBox="0 0 24 24"

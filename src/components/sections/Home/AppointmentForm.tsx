@@ -33,6 +33,14 @@ export default function AppointmentSection() {
     return `${d}/${m}/${y}`;
   }, [form.dateRaw]);
 
+  const todayYMD = useMemo(() => {
+    const d = new Date();
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, "0");
+    const day = String(d.getDate()).padStart(2, "0");
+    return `${y}-${m}-${day}`;
+  }, []);
+
   const setField =
     (key: keyof FormState) =>
       (val: string) =>
@@ -229,9 +237,18 @@ export default function AppointmentSection() {
                   className="peer w-full border-b border-gray-300 focus:outline-none focus:border-[#16c79a] py-2 bg-transparent appearance-none"
                 >
                   <option value="" disabled hidden></option>
-                  <option value="สมาธิสั้น">สมาธิสั้น</option>
-                  <option value="ปวดหัว">ปวดหัว</option>
-                  <option value="เหนื่อยง่าย">เหนื่อยง่าย</option>
+
+                  <option value="Addition">Addition (อาการเสพติด)</option>
+                  <option value="Anxiety">Anxiety (วิตกกังวล)</option>
+                  <option value="Attention Deficit Disorder">Attention Deficit Disorder (อาการสมาธิสั้น)</option>
+                  <option value="Dementia">Dementia (อาการที่เกิดจากการเสื่อมของเซลล์สมอง)</option>
+                  <option value="Insomnia">Insomnia (อาการนอนไม่หลับ)</option>
+                  <option value="Learning Disorders">Learning Disorders (อาการบกพร่องในการเรียนรู้)</option>
+                  <option value="Migraine">Migraine (ปวดศีรษะไมเกรน)</option>
+                  <option value="Mood Disorder">Mood Disorder (อาการผิดปกติด้านอารมณ์)</option>
+                  <option value="Post-stroke condition">Post-stroke condition (อาการหลังจากเกิดความผิดปกติของหลอดเลือดสมอง)</option>
+                  <option value="Stress">Stress (ภาวะเครียด)</option>
+                  <option value="Others">Others (อื่นๆ)</option>
                 </select>
                 <label htmlFor="symptom" className="absolute left-0 top-2 text-gray-500 text-base transition-all peer-focus:top-[-0.6rem] peer-focus:text-xs peer-focus:text-[#16c79a] peer-valid:top-[-0.6rem] peer-valid:text-xs peer-valid:text-[#16c79a]">
                   อาการ <span className="text-red-500">*</span>
@@ -266,10 +283,14 @@ export default function AppointmentSection() {
                   onFocus={() => setFocusedDate(true)}
                   onBlur={() => setFocusedDate(false)}
                   onChange={(e) => setField("dateRaw")(e.target.value)}
+                  min={todayYMD}
                   required
                   className="peer w-full border-b border-gray-300 focus:outline-none focus:border-[#16c79a] py-2 bg-transparent"
                 />
-                <label htmlFor="appointmentDate" className="absolute left-0 top-2 text-gray-500 text-base transition-all z-10 bg-white px-1 peer-focus:top-[-0.6rem] peer-focus:text-xs peer-focus:text-[#16c79a] peer-valid:top-[-0.6rem] peer-valid:text-xs peer-valid:text-[#16c79a] tracking-wider ">
+                <label
+                  htmlFor="appointmentDate"
+                  className="absolute left-0 top-2 text-gray-500 text-base transition-all z-10 bg-white px-1 peer-focus:top-[-0.6rem] peer-focus:text-xs peer-focus:text-[#16c79a] peer-valid:top-[-0.6rem] peer-valid:text-xs peer-valid:text-[#16c79a] tracking-wider"
+                >
                   วันที่นัดหมาย
                 </label>
               </div>
@@ -310,7 +331,8 @@ export default function AppointmentSection() {
 
             <p className="text-xs text-gray-500 text-center mt-2 leading-snug">
               เมื่อคลิก “ยืนยัน” ถือว่าคุณรับทราบและยินยอมให้เรานำข้อมูลของคุณไปจัดการตาม{" "}
-              <a className="text-[#16c79a] underline cursor-pointer" href="#">
+              {/* <a className="text-[#16c79a] underline cursor-pointer" href="#"> */}
+              <a className="">
                 นโยบายความเป็นส่วนตัวของ neurobalance
               </a>{" "}
               และยินดีรับข่าวสาร ข้อมูลสถิติที่เกี่ยวข้องจากเรา

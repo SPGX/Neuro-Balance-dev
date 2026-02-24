@@ -32,11 +32,11 @@ const COPY: Record<
       { title: "ความจำ", desc: "คำอธิบายโดยย่อ", img: "/home/child5.svg" },
     ],
     adult: [
-      { title: "การเคลื่อนไหว", desc: "คำอธิบายโดยย่อ", img: "/home/child5.svg" },
-      { title: "ความคิดและการสื่อสาร", desc: "คำอธิบายโดยย่อ", img: "/home/child5.svg" },
-      { title: "ความจำ", desc: "คำอธิบายโดยย่อ", img: "/home/child5.svg" },
-      { title: "การนอนหลับ", desc: "คำอธิบายโดยย่อ", img: "/home/child5.svg" },
-      { title: "ความเครียด", desc: "คำอธิบายโดยย่อ", img: "/home/child5.svg" },
+      { title: "การเคลื่อนไหว", desc: "คำอธิบายโดยย่อ", img: "/home/adult1.svg" },
+      { title: "ความคิดและการสื่อสาร", desc: "คำอธิบายโดยย่อ", img: "/home/adult2.svg" },
+      { title: "ความจำ", desc: "คำอธิบายโดยย่อ", img: "/home/adult3.svg" },
+      { title: "การนอนหลับ", desc: "คำอธิบายโดยย่อ", img: "/home/adult4.svg" },
+      { title: "ความเครียด", desc: "คำอธิบายโดยย่อ", img: "/home/adult5.svg" },
     ],
   },
   en: {
@@ -52,11 +52,11 @@ const COPY: Record<
       { title: "Memory", desc: "description", img: "/home/child5.svg" },
     ],
     adult: [
-      { title: "Mobility", desc: "description", img: "/home/child5.svg" },
-      { title: "Cognitive Process & Communication", desc: "description", img: "/home/child5.svg" },
-      { title: "Memory", desc: "description", img: "/home/child5.svg" },
-      { title: "Sleep", desc: "description", img: "/home/child5.svg" },
-      { title: "Stress", desc: "description", img: "/home/child5.svg" },
+      { title: "Mobility", desc: "description", img: "/home/adult1.svg" },
+      { title: "Cognitive Process & Communication", desc: "description", img: "/home/adult2.svg" },
+      { title: "Memory", desc: "description", img: "/home/adult3.svg" },
+      { title: "Sleep", desc: "description", img: "/home/adult4.svg" },
+      { title: "Stress", desc: "description", img: "/home/adult5.svg" },
     ],
   },
 };
@@ -143,22 +143,22 @@ export default function SymptomSection() {
                   {/* <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-transparent" /> */}
                   <div className="absolute bottom-0 left-0 w-full px-6 py-6">
                     {/* แถบพื้นหลังล่างแบบ blur + gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/30 to-transparent backdrop-blur-[6px]" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/50 to-transparent backdrop-blur-[10px]" />
 
                     <div className="relative z-10 flex items-end justify-between gap-4">
-                      <div className="min-w-0">
-                        <h3 className="text-white font-extrabold text-[28px] leading-tight truncate">
+                      <div className="max-w-full">
+                        <h3 className="text-white font-semibold text-[28px] leading-tight line-clamp-2">
                           {item.title}
                         </h3>
 
                         {/* ถ้าต้องการ desc ใต้หัวข้อ (ถ้าไม่อยากมี ให้ลบ div นี้ทิ้งได้เลย) */}
-                        <div className="text-white/85 text-sm mt-1 line-clamp-2">
+                        {/* <div className="text-white/85 text-sm mt-1 line-clamp-2">
                           {item.desc}
-                        </div>
+                        </div> */}
                       </div>
 
                       {/* ปุ่มวงกลมลูกศร */}
-                      <div className="shrink-0 absolute right-0 bottom-12 ">
+                      {/* <div className="shrink-0 absolute right-0 bottom-8 ">
                         <div
                           className={[
                             "w-14 h-14 rounded-full bg-white/95 grid place-items-center",
@@ -169,7 +169,7 @@ export default function SymptomSection() {
                         >
                           <ArrowRight className="w-6 h-6 text-[#2CC9A6] transition-transform duration-300 group-hover:translate-x-0.5" />
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
