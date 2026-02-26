@@ -52,13 +52,13 @@ function StatCard({
   subtitle: string;
 }) {
   return (
-    <div className="flex items-center gap-3 rounded-2xl bg-white/10 backdrop-blur-sm shadow-[0_10px_30px_rgba(0,0,0,0.08)] px-4 py-3">
+    <div className="flex items-center gap-3 rounded-2xl bg-white/10 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.08)] px-4 py-3">
       <div className="h-10 w-10 rounded-xl bg-white/70 grid place-items-center shadow-sm">
         <img src={iconSrc} alt="" className="object-contain" aria-hidden />
       </div>
       <div className="leading-tight">
-        <div className="text-[15px] font-extrabold text-slate-800">{title}</div>
-        <div className="text-[12px] font-medium text-slate-600">{subtitle}</div>
+        <div className="text-[15px] font-bold text-slate-800">{title}</div>
+        <div className="text-[12px] font-normal text-slate-600">{subtitle}</div>
       </div>
     </div>
   );

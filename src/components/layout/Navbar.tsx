@@ -95,11 +95,12 @@ export default function Navbar() {
                   className={({ isActive }) =>
                     [
                       'cursor-pointer transition-colors',
-                      isActive ? 'border-b-2 border-teal-600 text-teal-600' : 'hover:text-teal-600'
+                      isActive ? 'text-teal-600 font-semibold' : 'hover:text-teal-600 text-[#616467] font-normal',
+                      !isActive || solid ? "" : "border-b-2 border-teal-600"
                     ].join(' ')
                   }
                 >
-                  <span className="font-medium">{label}</span>
+                  <span>{label}</span>
                 </NavLink>
               ))}
             </div>
@@ -109,7 +110,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={toggle}
-              className="inline-flex items-center gap-2 bg-gray-100 hover:bg-gray-200 transition px-3 py-1.5 rounded-full"
+              className={classNames("inline-flex items-center gap-2 hover:bg-gray-200 transition px-3 py-1.5 rounded-full", solid ? "bg-gray-100" : "bg-white")}
               aria-label="สลับภาษา"
             >
               <img src={flagSrc} alt={isTH ? 'TH' : 'EN'} className="w-5 h-5 rounded-full" />
