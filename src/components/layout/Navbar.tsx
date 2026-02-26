@@ -63,9 +63,9 @@ export default function Navbar() {
               aria-label="เปิดเมนู"
             >
               <div className="relative w-7 h-5 flex flex-col justify-between">
-                <span className={classNames("block h-1 bg-gray-800 rounded transition-all duration-200", open && "rotate-45 translate-y-2")} />
-                <span className={classNames("block h-1 bg-gray-800 rounded transition-all duration-200", open && "opacity-0")} />
-                <span className={classNames("block h-1 bg-gray-800 rounded transition-all duration-200", open && "-rotate-45 -translate-y-2")} />
+                <span className={classNames("block h-[3px] bg-[#1D2126] rounded-full transition-all duration-200", open && "rotate-45 translate-y-2")} />
+                <span className={classNames("block h-[3px] bg-[#1D2126] rounded-full transition-all duration-200", open && "opacity-0")} />
+                <span className={classNames("block h-[3px] bg-[#1D2126] rounded-full transition-all duration-200", open && "-rotate-45 -translate-y-2")} />
               </div>
             </button>
           </div>
@@ -109,7 +109,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={toggle}
-              className="inline-flex items-center gap-2 bg-gray-100 hover:bg-gray-200 transition shadow px-3 py-1.5 rounded-full"
+              className="inline-flex items-center gap-2 bg-gray-100 hover:bg-gray-200 transition px-3 py-1.5 rounded-full"
               aria-label="สลับภาษา"
             >
               <img src={flagSrc} alt={isTH ? 'TH' : 'EN'} className="w-5 h-5 rounded-full" />
@@ -152,7 +152,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={toggle}
-              className="inline-flex items-center gap-2 bg-gray-100 hover:bg-gray-200 transition shadow px-4 py-2 rounded-full text-sm"
+              className="inline-flex items-center gap-2 bg-gray-100 hover:bg-gray-200 transition px-4 py-2 rounded-full text-sm"
               aria-label="สลับภาษา"
             >
               <img src={flagSrc} alt={isTH ? 'TH' : 'EN'} className="w-5 h-5 rounded-full" />

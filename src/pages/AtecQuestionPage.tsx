@@ -31,7 +31,7 @@ export default function AtecQuestionPage() {
   }, []);
 
   // ✅ lock body scroll on mobile (hide footer) — only while doing questions
-  const lockScroll = isMobile
+  const lockScroll = isMobile;
   useEffect(() => {
     if (!lockScroll) return;
 
@@ -299,7 +299,7 @@ export default function AtecQuestionPage() {
       <div className="w-full lg:w-1/3 flex flex-col gap-4">
         {/* tablet (md) show compact progress */}
         <aside className="lg:hidden rounded-2xl shadow p-6 border border-gray-200 bg-[#F3F4F6]">
-          <div className="text-[#00BFA5] text-5xl font-extrabold leading-none">
+          <div className="text-[#00BFA5] text-5xl font-semibold leading-none">
             {percentage}%
           </div>
           <div className="text-gray-700 text-sm font-medium mt-1 mb-3">
@@ -348,7 +348,7 @@ export default function AtecQuestionPage() {
 
         {/* desktop sidebar */}
         <aside className="hidden lg:block rounded-2xl shadow p-6 border border-gray-200 bg-[#F3F4F6]">
-          <div className="text-[#00BFA5] text-4xl font-extrabold leading-none">
+          <div className="text-[#00BFA5] text-4xl font-semibold leading-none">
             {percentage}%
           </div>
           <div className="text-gray-700 text-sm font-medium mt-1 mb-4">
@@ -407,24 +407,42 @@ export default function AtecQuestionPage() {
       return (
         <div className="md:hidden h-[100svh] w-full bg-white overflow-hidden flex flex-col">
           {/* TOP */}
-          <div className="px-6 pt-16">
-            <div className="text-[#00BFA5] text-5xl font-extrabold leading-none">
+          <div className="px-6 pt-20">
+            <div className="text-[#00BFA5] text-5xl font-semibold leading-none">
               {percentage}%
             </div>
-            <div className="mt-2 text-sm font-semibold text-[#111827]">
+            <div className="mt-2 py-2 text-sm font-semibold text-[#111827]">
               แบบประเมินเสร็จสิ้น
             </div>
 
             {/* stepper 5 จุด (ลงทะเบียน + 4 หมวด) */}
-            <div className="mt-4 flex items-center">
-              {[0, 1, 2, 3, 4].map((i) => (
-                <div key={i} className="flex items-center flex-1">
-                  <div className="w-6 h-6 rounded-full bg-[#00BFA5] grid place-items-center">
-                    <CheckCircle className="w-4 h-4 text-white" />
-                  </div>
-                  {i < 4 && <div className="h-[2px] mx-2 flex-1 rounded bg-[#00BFA5]" />}
-                </div>
-              ))}
+            <div className="mt-4 flex items-center w-full gap-x-2 px-6">
+              {[0, 1, 2, 3, 4].map((_, i) => {
+                const done = i <= currentCategoryIndex;
+                const lineActive = i < currentCategoryIndex;
+
+                return (
+                  <React.Fragment key={i}>
+                    <div
+                      className={[
+                        "w-5 h-5 rounded-full grid place-items-center shrink-0",
+                        done ? "bg-[#00BFA5]" : "bg-gray-300",
+                      ].join(" ")}
+                    >
+                      <Check className="w-4 h-4 text-white" strokeWidth={3} />
+                    </div>
+
+                    {i < 4 && (
+                      <div
+                        className={[
+                          "h-[2px] flex-1 rounded",
+                          lineActive ? "bg-[#00BFA5]" : "bg-gray-300",
+                        ].join(" ")}
+                      />
+                    )}
+                  </React.Fragment>
+                );
+              })}
             </div>
           </div>
 
@@ -447,7 +465,7 @@ export default function AtecQuestionPage() {
             <div className="mt-6 space-y-6">
               <div>
                 <div className="text-xs text-[#6E6E73]">คะแนนรวม (คะแนน)</div>
-                <div className="text-2xl font-extrabold text-[#25E39D]">
+                <div className="text-2xl font-semibold text-[#25E39D]">
                   {totalScore}/179
                 </div>
               </div>
@@ -455,7 +473,7 @@ export default function AtecQuestionPage() {
               <div>
                 <div className="text-xs text-[#6E6E73]">คิดเป็นเปอร์เซ็นต์</div>
                 <div className="flex items-end gap-1">
-                  <div className="text-4xl font-extrabold text-[#111827] leading-none">
+                  <div className="text-4xl font-semibold text-[#111827] leading-none">
                     {percentageScore}
                   </div>
                   <div className="text-sm font-semibold text-[#6E6E73] mb-1">%</div>
@@ -501,7 +519,7 @@ export default function AtecQuestionPage() {
                     <div className="text-sm font-medium text-[#3E3E44]">อาการ</div>
                     <div
                       style={{ color: getSeverityColor() }}
-                      className="text-3xl font-extrabold"
+                      className="text-3xl font-semibold"
                     >
                       {getSeverityLevel()}
                     </div>
@@ -734,41 +752,45 @@ export default function AtecQuestionPage() {
     return (
       <div className="md:hidden h-[100svh] w-full bg-white overflow-hidden flex flex-col">
         {/* TOP */}
-        <div className="px-6 pt-16">
-          <div className="text-[#00BFA5] text-5xl font-extrabold leading-none">
+        <div className="px-6 pt-20">
+          <div className="text-[#00BFA5] text-5xl font-semibold leading-none">
             {percentage}%
           </div>
 
-          <div className="mt-2 text-sm font-semibold text-[#111827]">
+          <div className="mt-2 py-2 text-sm font-semibold text-[#111827]">
             แบบทดสอบ: {registered ? currentCategory.category : "ATEC"}
           </div>
 
           {/* stepper 5 circles */}
-          <div className="mt-4 flex items-center">
-            {mobileSteps.map((_, i) => {
-              const done = i <= currentStep; // ✅ ให้เหมือนรูป (รวม step ปัจจุบันด้วย)
-              const lineActive = i < currentStep;
-              return (
-                <div key={i} className="flex items-center flex-1">
-                  <div
-                    className={`w-6 h-6 rounded-full grid place-items-center ${done ? "bg-[#00BFA5]" : "bg-gray-300"
-                      }`}
-                  >
-                    {done ? (
+          <div className="mt-4 flex justify-cente">
+            <div className="flex items-center w-full max-w-[620px] ml-6">
+              {mobileSteps.map((_, i) => {
+                const done = i <= currentStep;
+                const lineActive = i < currentStep;
+
+                return (
+                  <div key={i} className="flex items-center flex-1">
+                    <div
+                      className={[
+                        "w-5 h-5 rounded-full grid place-items-center",
+                        done ? "bg-[#00BFA5]" : "bg-gray-300",
+                      ].join(" ")}
+                    >
                       <Check className="w-4 h-4 text-white" strokeWidth={3} />
-                    ) : (
-                      <div className="w-2 h-2 rounded-full bg-white/80" />
+                    </div>
+
+                    {i < mobileSteps.length - 1 && (
+                      <div
+                        className={[
+                          "h-[2px] mx-2 w-10 flex-1 rounded",
+                          lineActive ? "bg-[#00BFA5]" : "bg-gray-300",
+                        ].join(" ")}
+                      />
                     )}
                   </div>
-                  {i < mobileSteps.length - 1 && (
-                    <div
-                      className={`h-[2px] mx-2 flex-1 rounded ${lineActive ? "bg-[#00BFA5]" : "bg-gray-300"
-                        }`}
-                    />
-                  )}
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
 
@@ -844,20 +866,20 @@ export default function AtecQuestionPage() {
             </div>
           ) : (
             <>
-              <div className="text-[#007BFF] text-sm font-semibold">
+              <div className="text-[#1680CE] text-sm font-semibold mt-6">
                 คำถามที่ {mobileQ + 1}/{currentCategory.questions.length}
               </div>
 
-              <h2 className="mt-2 text-3xl font-extrabold text-[#111827] leading-tight">
+              <h2 className="mt-4 mb-6 text-3xl font-semibold text-[#111827] leading-tight">
                 {currentCategory.questions[mobileQ]}
               </h2>
 
-              <p className="mt-3 text-sm text-gray-400">
+              <p className="mt-3 text-sm text-[#1D212680]">
                 โปรดเลือกคำตอบที่ตรงกับตัวเด็ก
               </p>
 
               <div
-                className={`mt-6 space-y-4 ${missingKeys.includes(mobileKey)
+                className={`mt-4 space-y-6 ${missingKeys.includes(mobileKey)
                   ? "ring-2 ring-red-300 rounded-2xl p-3"
                   : ""
                   }`}
@@ -882,13 +904,23 @@ export default function AtecQuestionPage() {
 
         {/* BOTTOM (buttons + gradient like screenshot) */}
         {registered && (
-          <div className="relative h-[240px] shrink-0 overflow-hidden">
+          <div className="relative h-[300px] shrink-0 overflow-hidden">
             {/* base gradient */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#2C64FF] via-[#69E6D4] to-[#1F80FF]" />
-            {/* fade to white at top */}
-            <div className="absolute inset-0 bg-gradient-to-t from-transparent via-white/50 to-white" />
+            {/* <div className="absolute inset-0 bg-[linear-gradient(90deg,#5195EE_0%,#5B9DEC_25%,#59DCD3_55%,#5ED2C4_75%,#58D4BF_100%)]" /> */}
 
-            <div className="relative h-full px-7 pt-8 flex flex-col">
+            {/* bottom svg background (h-[200px]) */}
+            <div className="absolute inset-x-0 bottom-0 h-[220px] z-[1] pointer-events-none">
+              <img
+                src={'/images/bottom.svg'}
+                alt=""
+                className="h-full w-full object-cover"
+              />
+            </div>
+
+            {/* fade to white at top */}
+            {/* <div className="absolute inset-0 z-[2] bg-gradient-to-t from-transparent via-white/70 to-white" /> */}
+
+            <div className="relative z-[3] h-full px-7 pt-8 flex flex-col">
               <div className="flex items-center justify-between">
                 <button
                   type="button"
@@ -908,7 +940,7 @@ export default function AtecQuestionPage() {
                     "w-14 h-14 rounded-full flex items-center justify-center active:scale-95 transition",
                     mobileHasAnswer
                       ? "text-white bg-gradient-to-r from-[#106EE8] to-[#00AAFF] shadow-[0_0_15px_rgba(15,113,233,0.4)]"
-                      : "bg-white/40 text-white/80 cursor-not-allowed shadow-none",
+                      : "bg-[#EAEAEA] text-white/80 cursor-not-allowed shadow-none",
                   ].join(" ")}
                 >
                   <ArrowRight className="w-6 h-6" strokeWidth={2.5} />
